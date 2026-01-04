@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<mod
+    name="Timelines Skinlib"
+    description=""
+    author="shinrax2 and dribbleondo"
+    version="0.1"
+    contact=""
+    disable_safe_mode="true"
+    priority="111"
+>
+    <hooks>
+        <pre hook_id="lib/setups/setup" script_path="core.lua" />
+    </hooks>
+
+    <localization default="english">
+		<loc file="english.json" language="english" />
+	</localization>
+
+    <assets load="startup">
+        <file path="timelines_welrod_df.texture" name="units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_df.texture" />
+        <file path="timelines_welrod_gsm.texture" name="units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm.texture" />
+    </assets>
+</mod>
