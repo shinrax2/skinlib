@@ -13,7 +13,7 @@ Hooks:PostHook(WeaponTweakData, "_init_data_weapon_skins", "SkinLib_init_data_we
 			si.challenge = skin.params.challenge or nil
 			si.droppable = skin.params.droppable or nil
 			si.gold_price = skin.params.gold_price or nil
-			si.rarity = skin.params.rarity or nil
+			si.rarity = LootDropTweakData[skin.params.rarity] or nil
 			si.replaces_units = skin.params.replaces_units or nil
 			si.icon_large = skin.params.icon_large or nil
 			self.weapon_skins[id] = si
