@@ -1,4 +1,6 @@
-FIX show skin on skin menu
-FIX welrod/other gun skins disappearing/reappearing when reloading/in animation
 DOC document params & funcs
-DOC add/link example skin mod
+
+IMP model overwrite
+IMP grenade/melee overwrite
+
+TEST MP

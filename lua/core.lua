@@ -8,6 +8,19 @@ SkinLib._injected_parts = {}
 
 -- PRIVATE
 
+function SkinLib._add_unique_material(unique_material, material)
+    local inserted = false
+    for _, m in ipairs(unique_material) do
+        if m == material then
+            inserted = true
+        end
+    end
+    if not inserted then
+        table.insert(unique_material, material)
+    end
+    return unique_material
+end
+
 function SkinLib._is_skin_injected(skin_id)
     for _, id in pairs(SkinLib._injected_skins) do
         if id == skin_id then
@@ -59,7 +72,7 @@ function SkinLib.AddSkin(params)
     SkinLib._add_skin(skin)
 end
 
-function SkinLib.AddSkinPart(params)
+function SkinLib.AddPart(params)
     local part = {}
     part.params = params
     part.id = params.part_id

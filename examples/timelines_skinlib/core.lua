@@ -16,10 +16,6 @@ local part_body = {
             material_texture = "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm"
         }
     },
-    materials = {
-        fps = {"wpn_fps_pis_welrod"},
-        tps = {"wpn_third_pis_welrod"},
-    },
 }
 
 local part_bolt = {
@@ -39,10 +35,6 @@ local part_bolt = {
             diffuse_texture = "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_df",
             material_texture = "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm"
         }
-    },
-    materials = {
-        fps = {"wpn_fps_pis_welrod"},
-        tps = {"wpn_third_pis_welrod"},
     },
 }
 
@@ -64,10 +56,6 @@ local part_m = {
             material_texture = "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm"
         }
     },
-    materials = {
-        fps = {"wpn_fps_pis_welrod"},
-        tps = {"wpn_third_pis_welrod"},
-    },
 }
 
 local part_catch = {
@@ -87,10 +75,6 @@ local part_catch = {
             diffuse_texture = "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_df",
             material_texture = "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm"
         }
-    },
-    materials = {
-        fps = {"wpn_fps_pis_welrod"},
-        tps = {"wpn_third_pis_welrod"},
     },
 }
 
@@ -112,10 +96,6 @@ local part_trigger = {
             material_texture = "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm"
         }
     },
-    materials = {
-        fps = {"wpn_fps_pis_welrod"},
-        tps = {"wpn_third_pis_welrod"},
-    },
 }
 
 local part_safety = {
@@ -136,10 +116,6 @@ local part_safety = {
             material_texture = "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm"
         }
     },
-    materials = {
-        fps = {"wpn_fps_pis_welrod"},
-        tps = {"wpn_third_pis_welrod"},
-    },
 }
 
 local skin = {
@@ -156,15 +132,17 @@ local skin = {
         wpn_fps_pis_welrod_trigger = "wpn_fps_pis_welrod_trigger_timelines",
         wpn_fps_pis_welrod_safety = "wpn_fps_pis_welrod_safety_timelines",
     },
-    gold_price = 1
+    gold_price = 50,
+    droppable = true,
+    rarity = "RARITY_COMMON"
 }
 
 if SkinLib then
-    SkinLib.AddSkinPart(part_body)
-    SkinLib.AddSkinPart(part_bolt)
-    SkinLib.AddSkinPart(part_m)
-    SkinLib.AddSkinPart(part_catch)
-    SkinLib.AddSkinPart(part_trigger)
-    SkinLib.AddSkinPart(part_safety)
+    SkinLib.AddPart(part_body)
+    SkinLib.AddPart(part_bolt)
+    SkinLib.AddPart(part_m)
+    SkinLib.AddPart(part_catch)
+    SkinLib.AddPart(part_trigger)
+    SkinLib.AddPart(part_safety)
     SkinLib.AddSkin(skin)
 end
