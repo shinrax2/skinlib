@@ -1,3 +1,6 @@
+dofile(ModPath .. "lua/part_class.lua")
+dofile(ModPath .. "lua/skin_class.lua")
+
 _G.SkinLib = _G.SkinLib or {}
 SkinLib.path = ModPath
 SkinLib.data = SavePath
@@ -50,17 +53,38 @@ function SkinLib._add_part(part)
     SkinLib._parts[part.id] = part
 end
 
+function SkinLib._add_unique_material(unique_material, material)
+    local inserted = false
+    for _, m in ipairs(unique_material) do
+        if m == material then
+            inserted = true
+        end
+    end
+    if not inserted then
+        table.insert(unique_material, material)
+    end
+    return unique_material
+end
+
 -- PUBLIC
 
 function SkinLib.AddSkin(params)
     local skin = {}
+    if type(params) == "table" and params._to_tbl then
+        skin._cls = deep_clone(params)
+        params = params:_to_tbl()
+    end
     skin.params = params
     skin.id = params.skin_id
     SkinLib._add_skin(skin)
 end
 
-function SkinLib.AddSkinPart(params)
+function SkinLib.AddPart(params)
     local part = {}
+    if type(params) == "table" and params._to_tbl then
+        part._cls = deep_clone(params)
+        params = params:_to_tbl()
+    end
     part.params = params
     part.id = params.part_id
     SkinLib._add_part(part)
