@@ -90,9 +90,10 @@ function SL_Part:_add_material(view_type, material_name, bump_normal, diffuse, m
     end
     if self._part.materials[view_type] then
         local found = false
-        for k, v in ipairs(self._part.materials[view_type]) do
+        for _, v in ipairs(self._part.materials[view_type]) do
             if v == material_name then
                 found = true
+                break
             end
         end
         if not found then
