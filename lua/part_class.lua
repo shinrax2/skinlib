@@ -92,6 +92,23 @@ function SL_Part:add_fps_material(material_name, bump_normal, diffuse, material_
     if reflection_texture then
         self._part.fps[material_name].reflection_texture = reflection_texture
     end
+    if not self._part.materials then
+        self._part.materials = {}
+    end
+    if not self._part.materials.fps then
+        self._part.materials.fps = {}
+    end
+    if self._part.materials.fps then
+        local found = false
+        for k, v in ipairs(self._part.materials.fps) do
+            if v == material_name then
+                found = true
+            end
+        end
+        if not found then
+            table.insert(self._part.materials.fps, material_name)
+        end
+    end
     return self
 end
 
@@ -113,6 +130,23 @@ function SL_Part:add_tps_material(material_name, bump_normal, diffuse, material_
     end
     if reflection_texture then
         self._part.tps[material_name].reflection_texture = reflection_texture
+    end
+    if not self._part.materials then
+        self._part.materials = {}
+    end
+    if not self._part.materials.tps then
+        self._part.materials.tps = {}
+    end
+    if self._part.materials.tps then
+        local found = false
+        for k, v in ipairs(self._part.materials.tps) do
+            if v == material_name then
+                found = true
+            end
+        end
+        if not found then
+            table.insert(self._part.materials.tps, material_name)
+        end
     end
     return self
 end
