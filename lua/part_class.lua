@@ -39,25 +39,17 @@ function SL_Part:_validate(factory)
     end
 
     -- set textures loaded?
-    -- fps
-    if self._part.fps then
-        for mat, data in pairs(self._part.fps) do
-            for typ, texture in pairs(data) do
-                if not DB:has(ids_texture, texture) then
-                    log(sl_part_head .. "part_id: '" .. self._part.part_id .. "' material: '" .. mat .. "' type: '" .. typ .. "' texture: '" .. texture .. "'")
-                    valid = false
-                end
-            end
-        end
-    end
-
-    -- tps
-    if self._part.tps then
-        for mat, data in pairs(self._part.tps) do
-            for typ, texture in pairs(data) do
-                if not DB:has(ids_texture, texture) then
-                    log(sl_part_head .. "part_id: '" .. self._part.part_id .. "' material: '" .. mat .. "' type: '" .. typ .. "' texture: '" .. texture .. "'")
-                    valid = false
+    for _, view_type in ipairs({ "fps", "tps" }) do
+        if self._part[view_type] then
+            for mat, data in pairs(self._part[view_type]) do
+                for typ, texture in pairs(data) do
+                    if not DB:has(ids_texture, texture) then
+                        log(sl_part_head ..
+                            "part_id: '" ..
+                            self._part.part_id ..
+                            "' material: '" .. mat .. "' type: '" .. typ .. "' texture: '" .. texture .. "'")
+                        valid = false
+                    end
                 end
             end
         end
@@ -71,84 +63,53 @@ function SL_Part:_validate(factory)
     return valid
 end
 
--- PUBLIC
-
-function SL_Part:add_fps_material(material_name, bump_normal, diffuse, material_texture, reflection_texture)
-    if not self._part.fps then
-        self._part.fps = {}
+function SL_Part:_add_material(view_type, material_name, bump_normal, diffuse, material_texture, reflection_texture)
+    if not self._part[view_type] then
+        self._part[view_type] = {}
     end
-    if not self._part.fps[material_name] then
-        self._part.fps[material_name] = {}
+    if not self._part[view_type][material_name] then
+        self._part[view_type][material_name] = {}
     end
     if bump_normal then
-        self._part.fps[material_name].bump_normal_texture = bump_normal
+        self._part[view_type][material_name].bump_normal_texture = bump_normal
     end
     if diffuse then
-        self._part.fps[material_name].diffuse_texture = diffuse
+        self._part[view_type][material_name].diffuse_texture = diffuse
     end
     if material_texture then
-        self._part.fps[material_name].material_texture = material_texture
+        self._part[view_type][material_name].material_texture = material_texture
     end
     if reflection_texture then
-        self._part.fps[material_name].reflection_texture = reflection_texture
+        self._part[view_type][material_name].reflection_texture = reflection_texture
     end
     if not self._part.materials then
         self._part.materials = {}
     end
-    if not self._part.materials.fps then
-        self._part.materials.fps = {}
+    if not self._part.materials[view_type] then
+        self._part.materials[view_type] = {}
     end
-    if self._part.materials.fps then
+    if self._part.materials[view_type] then
         local found = false
-        for k, v in ipairs(self._part.materials.fps) do
+        for k, v in ipairs(self._part.materials[view_type]) do
             if v == material_name then
                 found = true
             end
         end
         if not found then
-            table.insert(self._part.materials.fps, material_name)
+            table.insert(self._part.materials[view_type], material_name)
         end
     end
     return self
 end
 
+-- PUBLIC
+
+function SL_Part:add_fps_material(material_name, bump_normal, diffuse, material_texture, reflection_texture)
+    return self:_add_material("fps", material_name, bump_normal, diffuse, material_texture, reflection_texture)
+end
+
 function SL_Part:add_tps_material(material_name, bump_normal, diffuse, material_texture, reflection_texture)
-    if not self._part.tps then
-        self._part.tps = {}
-    end
-    if not self._part.tps[material_name] then
-        self._part.tps[material_name] = {}
-    end
-    if bump_normal  then
-        self._part.tps[material_name].bump_normal_texture = bump_normal
-    end
-    if diffuse then
-        self._part.tps[material_name].diffuse_texture = diffuse
-    end
-    if material_texture then
-        self._part.tps[material_name].material_texture = material_texture
-    end
-    if reflection_texture then
-        self._part.tps[material_name].reflection_texture = reflection_texture
-    end
-    if not self._part.materials then
-        self._part.materials = {}
-    end
-    if not self._part.materials.tps then
-        self._part.materials.tps = {}
-    end
-    if self._part.materials.tps then
-        local found = false
-        for k, v in ipairs(self._part.materials.tps) do
-            if v == material_name then
-                found = true
-            end
-        end
-        if not found then
-            table.insert(self._part.materials.tps, material_name)
-        end
-    end
-    return self
+    return self:_add_material("tps", material_name, bump_normal, diffuse, material_texture, reflection_texture)
 end
 
 function SL_Part:add_unit(unit)
