@@ -136,7 +136,7 @@ Hooks:Add("SkinLibCollectData", "TimelinesWelrod.SkinLibCollectData",
             },
             gold_price = 50,
             droppable = true,
-            rarity = "RARITY_COMMON"
+            rarity = LootDropTweakData.RARITY_COMMON
         }
 
         self.RegisterPart(part_body)
