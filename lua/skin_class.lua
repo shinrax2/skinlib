@@ -128,4 +128,5 @@ function SL_Skin:add_part(part)
         self._skin.replaces_parts[part:_base_part()] = part:_part_id()
     end
     table.insert(self._skin.parts, part)
+    return self
 end

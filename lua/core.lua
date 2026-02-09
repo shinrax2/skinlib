@@ -50,7 +50,7 @@ function SkinLib._add_skin(skin)
     SkinLib._skins[skin.id] = skin
 end
 
-function SkinLib._add_part(part, id)
+function SkinLib._add_part(part)
     SkinLib._parts[part.id] = part
 end
 
