@@ -1,4 +1,4 @@
--- copy of SBLT's table.merge since that is not defined when this code is run
+-- copy of table.merge since we run before its defined by SBLT
 local function merge(og_table, new_table)
 	if not new_table then
 		return og_table
@@ -7,7 +7,7 @@ local function merge(og_table, new_table)
 	for i, data in pairs(new_table) do
 		i = type(data) == "table" and data.index or i
 		if type(data) == "table" and type(og_table[i]) == "table" then
-			og_table[i] = table.merge(og_table[i], data)
+			og_table[i] = merge(og_table[i], data)
 		else
 			og_table[i] = data
 		end
@@ -19,34 +19,41 @@ end
 
 Hooks:PostHook(WeaponFactoryTweakData, "_init_weapon_skins", "SkinLib_init_weapon_skins", function(self)
     for id, part in pairs(SkinLib._get_parts()) do
+        --if not SkinLib._is_part_injected(id) and part._cls and part._cls:_validate(self) then
         if not SkinLib._is_part_injected(id) then
-
+            if part._cls then
+                part._cls:_validate(self)
+                Utils.SaveTable(part._cls:_to_tbl(), "part_".. id .. ".txt")
+            else
+                Utils.SaveTable(part, "part_" .. id .. "_og.txt")
+            end
             -- setup materials
             local m_fps = {}
             local m_tps = {}
-            local materials_fps = part.params.fps or {}
-            local materials_tps = part.params.tps or {}
             local unique_materials = {}
 
+            local materials_fps = part.params.fps or {}
+            local materials_tps = part.params.tps or {}
+
             -- fps
-            for material, _ in pairs(materials_fps) do
-                m_fps[material] = {}
-                m_fps[material].bump_normal_texture = part.params.fps[material].bump_normal_texture or nil
-                m_fps[material].diffuse_texture = part.params.fps[material].diffuse_texture or nil
-                m_fps[material].material_texture = part.params.fps[material].material_texture or nil
-                m_fps[material].reflection_texture = part.params.fps[material].reflection_texture or nil
-                unique_materials = SkinLib._add_unique_material(unique_materials, material)
+            for name, _ in pairs(materials_fps) do
+                m_fps[name] = {}
+                m_fps[name].bump_normal_texture = part.params.fps[name].bump_normal_texture or nil
+                m_fps[name].diffuse_texture = part.params.fps[name].diffuse_texture or nil
+                m_fps[name].material_texture = part.params.fps[name].material_texture or nil
+                m_fps[name].reflection_texture = part.params.fps[name].reflection_texture or nil
+                unique_materials = SkinLib._add_unique_material(unique_materials, name)
             end
             -- tps
             if part.params.tps ~= nil then
-                for material, _ in pairs(materials_tps) do
+                for name, _ in pairs(materials_tps) do
                     -- tps provided
-                    m_tps[material] = {}
-                    m_tps[material].bump_normal_texture = part.params.tps[material].bump_normal_texture or nil
-                    m_tps[material].diffuse_texture = part.params.tps[material].diffuse_texture or nil
-                    m_tps[material].material_texture = part.params.tps[material].material_texture or nil
-                    m_tps[material].reflection_texture = part.params.tps[material].reflection_texture or nil
-                    unique_materials = SkinLib._add_unique_material(unique_materials, material)
+                    m_tps[name] = {}
+                    m_tps[name].bump_normal_texture = part.params.tps[name].bump_normal_texture or nil
+                    m_tps[name].diffuse_texture = part.params.tps[name].diffuse_texture or nil
+                    m_tps[name].material_texture = part.params.tps[name].material_texture or nil
+                    m_tps[name].reflection_texture = part.params.tps[name].reflection_texture or nil
+                    unique_materials = SkinLib._add_unique_material(unique_materials, name)
                 end
             else
                 -- use fps as tps
@@ -57,17 +64,15 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_weapon_skins", "SkinLib_init_weapo
 
             -- insert part
             self.parts[part.params.part_id] = deep_clone(self.parts[part.params.base_part])
-            if #unique_materials > 0 then
+            if #unique_materials ~= 0 then
                 self.parts[part.params.part_id].materials_fps = merge(self.parts[part.params.base_part].materials_fps or {}, m_fps)
                 self.parts[part.params.part_id].materials_tps = merge(self.parts[part.params.base_part].materials_tps or {}, m_tps)
                 self.parts[part.params.part_id].unique_materials = unique_materials
             end
-
-            if part.params.unit then
+            if part.params.unit ~= nil then
                 self.parts[part.params.part_id].unit = part.params.unit
             end
-
-            if part.params.third_unit then
+            if part.params.third_unit ~= nil then
                 self.parts[part.params.part_id].third_unit = part.params.third_unit
             end
 
