@@ -1,63 +1,36 @@
 if SkinLib then
+    local m_fps = SL_Material:new("wpn_fps_pis_welrod",
+    "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/wpn_fps_pis_welrod_nm",
+    "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_df",
+    "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm")
+    local m_tps = SL_Material:new("wpn_third_pis_welrod",
+        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/wpn_fps_pis_welrod_nm",
+        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_df",
+        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm")
+
     local part_body = SL_Part:new("wpn_fps_pis_welrod_body_standard_timelines","wpn_fps_pis_welrod", "wpn_fps_pis_welrod_body_standard")
-    part_body:add_fps_material("wpn_fps_pis_welrod",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/wpn_fps_pis_welrod_nm",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_df",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm")
-    part_body:add_tps_material("wpn_third_pis_welrod",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/wpn_fps_pis_welrod_nm",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_df",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm")
+    part_body:add_fps_material(m_fps)
+    part_body:add_tps_material(m_tps)
 
     local part_bolt = SL_Part:new("wpn_fps_pis_welrod_bolt_standard_timelines", "wpn_fps_pis_welrod", "wpn_fps_pis_welrod_bolt_standard")
-    part_bolt:add_fps_material("wpn_fps_pis_welrod",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/wpn_fps_pis_welrod_nm",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_df",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm")
-    part_bolt:add_tps_material("wpn_third_pis_welrod",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/wpn_fps_pis_welrod_nm",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_df",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm")
+    part_bolt:add_fps_material(m_fps)
+    part_bolt:add_tps_material(m_tps)
 
     local part_m = SL_Part:new("wpn_fps_pis_welrod_m_standard_timelines", "wpn_fps_pis_welrod","wpn_fps_pis_welrod_m_standard")
-    part_m:add_fps_material("wpn_fps_pis_welrod",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/wpn_fps_pis_welrod_nm",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_df",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm")
-    part_m:add_tps_material("wpn_third_pis_welrod",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/wpn_fps_pis_welrod_nm",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_df",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm")
+    part_m:add_fps_material(m_fps)
+    part_m:add_tps_material(m_tps)
 
     local part_catch = SL_Part:new("wpn_fps_pis_welrod_catch_timelines", "wpn_fps_pis_welrod", "wpn_fps_pis_welrod_catch")
-    part_catch:add_fps_material("wpn_fps_pis_welrod",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/wpn_fps_pis_welrod_nm",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_df",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm")
-    part_catch:add_tps_material("wpn_third_pis_welrod",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/wpn_fps_pis_welrod_nm",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_df",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm")
+    part_catch:add_fps_material(m_fps)
+    part_catch:add_tps_material(m_tps)
 
     local part_trigger = SL_Part:new("wpn_fps_pis_welrod_trigger_timelines", "wpn_fps_pis_welrod", "wpn_fps_pis_welrod_trigger")
-    part_trigger:add_fps_material("wpn_fps_pis_welrod",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/wpn_fps_pis_welrod_nm",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_df",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm")
-    part_trigger:add_tps_material("wpn_third_pis_welrod",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/wpn_fps_pis_welrod_nm",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_df",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm")
+    part_trigger:add_fps_material(m_fps)
+    part_trigger:add_tps_material(m_tps)
 
     local part_safety = SL_Part:new("wpn_fps_pis_welrod_safety_timelines", "wpn_fps_pis_welrod", "wpn_fps_pis_welrod_safety")
-    part_safety:add_fps_material("wpn_fps_pis_welrod",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/wpn_fps_pis_welrod_nm",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_df",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm")
-    part_safety:add_tps_material("wpn_third_pis_welrod",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/wpn_fps_pis_welrod_nm",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_df",
-        "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm")
+    part_safety:add_fps_material(m_fps)
+    part_safety:add_tps_material(m_tps)
 
     local skin = SL_Skin:new("sx2_ws_welrod_timelines", "welrod")
     :set_name_id("sx2_ws_welrod_timelines"):

@@ -106,11 +106,19 @@ end
 -- PUBLIC
 
 function SL_Part:add_fps_material(material_name, bump_normal, diffuse, material_texture, reflection_texture)
-    return self:_add_material("fps", material_name, bump_normal, diffuse, material_texture, reflection_texture)
+    if type(material_name) == "table" then
+        return self:_add_material("fps", material_name:name(), material_name:bump_normal(), material_name:diffuse(), material_name:material(), material_name:reflection())
+    else
+        return self:_add_material("fps", material_name, bump_normal, diffuse, material_texture, reflection_texture)
+    end
 end
 
 function SL_Part:add_tps_material(material_name, bump_normal, diffuse, material_texture, reflection_texture)
-    return self:_add_material("tps", material_name, bump_normal, diffuse, material_texture, reflection_texture)
+    if type(material_name) == "table" then
+        return self:_add_material("tps", material_name:name(), material_name:bump_normal(), material_name:diffuse(), material_name:material(), material_name:reflection())
+    else
+        return self:_add_material("tps", material_name, bump_normal, diffuse, material_texture, reflection_texture)
+    end
 end
 
 function SL_Part:add_unit(unit)
