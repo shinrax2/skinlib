@@ -43,5 +43,5 @@ if SkinLib then
     :add_part(part_catch)
     :add_part(part_trigger)
     :add_part(part_safety)
-    SkinLib.AddSkin(skin)
+    SkinLib.RegisterSkin(skin)
 end

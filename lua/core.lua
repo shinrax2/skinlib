@@ -69,11 +69,11 @@ end
 
 -- PUBLIC
 
-function SkinLib.AddSkin(params)
+function SkinLib.RegisterSkin(params)
     local skin = {}
     if params._parts then
         for _, part in ipairs(params:_parts()) do
-            SkinLib.AddPart(part)
+            SkinLib.RegisterPart(part)
         end
     end
     if type(params) == "table" and params._to_tbl then
@@ -85,7 +85,7 @@ function SkinLib.AddSkin(params)
     SkinLib._add_skin(skin)
 end
 
-function SkinLib.AddPart(params)
+function SkinLib.RegisterPart(params)
     local part = {}
     if type(params) == "table" and params._to_tbl then
         part._cls = deep_clone(params)

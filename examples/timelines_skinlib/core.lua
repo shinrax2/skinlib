@@ -138,11 +138,11 @@ local skin = {
 }
 
 if SkinLib then
-    SkinLib.AddPart(part_body)
-    SkinLib.AddPart(part_bolt)
-    SkinLib.AddPart(part_m)
-    SkinLib.AddPart(part_catch)
-    SkinLib.AddPart(part_trigger)
-    SkinLib.AddPart(part_safety)
-    SkinLib.AddSkin(skin)
+    SkinLib.RegisterPart(part_body)
+    SkinLib.RegisterPart(part_bolt)
+    SkinLib.RegisterPart(part_m)
+    SkinLib.RegisterPart(part_catch)
+    SkinLib.RegisterPart(part_trigger)
+    SkinLib.RegisterPart(part_safety)
+    SkinLib.RegisterSkin(skin)
 end
