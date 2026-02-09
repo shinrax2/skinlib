@@ -44,25 +44,6 @@ function SL_Skin:set_weapon_name_id(w_name_id)
     return self
 end
 
-function SL_Skin:set_replaces_part(base_part, replace_part)
-    if not self._skin.replaces_parts then
-        self._skin.replaces_parts = {}
-    end
-    if base_part and replace_part then
-        self._skin.replaces_parts[base_part] = replace_part
-    end
-    return self
-end
-
-function SL_Skin:set_replaces_parts(parts)
-    if parts then
-        for base, replace in pairs(parts) do
-            self:set_replaces_part(base, replace)
-        end
-    end
-    return self
-end
-
 function SL_Skin:set_gold_price(price)
     if price then
         self._skin.gold_price = price

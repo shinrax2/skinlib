@@ -19,14 +19,7 @@ end
 
 Hooks:PostHook(WeaponFactoryTweakData, "_init_weapon_skins", "SkinLib_init_weapon_skins", function(self)
     for id, part in pairs(SkinLib._get_parts()) do
-        --if not SkinLib._is_part_injected(id) and part._cls and part._cls:_validate(self) then
         if not SkinLib._is_part_injected(id) then
-            if part._cls then
-                part._cls:_validate(self)
-                Utils.SaveTable(part._cls:_to_tbl(), "part_".. id .. ".txt")
-            else
-                Utils.SaveTable(part, "part_" .. id .. "_og.txt")
-            end
             -- setup materials
             local m_fps = {}
             local m_tps = {}

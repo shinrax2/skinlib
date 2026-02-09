@@ -2,14 +2,7 @@
 
 Hooks:PostHook(WeaponTweakData, "_init_data_weapon_skins", "SkinLib_init_data_weapon_skins", function(self)
 	for id, skin in pairs(SkinLib._get_skins()) do
-		--if not SkinLib._is_skin_injected(id) and skin._cls and skin._cls:_validate() then
 		if not SkinLib._is_skin_injected(id) then
-			if skin._cls then
-                skin._cls:_validate(self)
-				Utils.SaveTable(skin._cls:_to_tbl(), "skin_" .. id .. ".txt")
-			else
-                Utils.SaveTable(skin, "skin_" .. id .. "_og.txt")
-            end
 			local si = {}
 			si.dlc = skin.params.dlc or nil
 			si.name_id = skin.params.name_id
