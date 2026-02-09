@@ -3,7 +3,7 @@ DOC add/link example skin mod
 
 IMP model overwrite/figure out how?!
 IMP use table.merge
-IMP skin:/part:_validate
+IMP skin:/part:_validate -> external to support json and class method
 
 IMP/TEST grenade/melee overwrites
 TEST MP

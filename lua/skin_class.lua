@@ -17,6 +17,10 @@ function SL_Skin:_validate()
     return true
 end
 
+function SL_Skin:_parts()
+    return self._skin.parts
+end
+
 -- PUBLIC
 
 function SL_Skin:set_name_id(name_id)
@@ -111,4 +115,17 @@ function SL_Skin:set_replaces_units(units)
         end
     end
     return self
+end
+
+function SL_Skin:add_part(part)
+    if not self._skin.parts then
+        self._skin.parts = {}
+    end
+    if not self._skin.replaces_parts then
+        self._skin.replaces_parts = {}
+    end
+    if part._part_id and part._base_part then
+        self._skin.replaces_parts[part:_base_part()] = part:_part_id()
+    end
+    table.insert(self._skin.parts, part)
 end

@@ -50,7 +50,7 @@ function SkinLib._add_skin(skin)
     SkinLib._skins[skin.id] = skin
 end
 
-function SkinLib._add_part(part)
+function SkinLib._add_part(part, id)
     SkinLib._parts[part.id] = part
 end
 
@@ -71,6 +71,11 @@ end
 
 function SkinLib.AddSkin(params)
     local skin = {}
+    if params._parts then
+        for _, part in ipairs(params:_parts()) do
+            SkinLib.AddPart(part)
+        end
+    end
     if type(params) == "table" and params._to_tbl then
         skin._cls = deep_clone(params)
         params = params:_to_tbl()

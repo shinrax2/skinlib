@@ -103,6 +103,14 @@ function SL_Part:_add_material(view_type, material_name, bump_normal, diffuse, m
     return self
 end
 
+function SL_Part:_base_part()
+    return self._part.base_part
+end
+
+function SL_Part:_part_id()
+    return self._part.part_id
+end
+
 -- PUBLIC
 
 function SL_Part:add_fps_material(material_name, bump_normal, diffuse, material_texture, reflection_texture)

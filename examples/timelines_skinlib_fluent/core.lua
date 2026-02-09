@@ -9,50 +9,39 @@ if SkinLib then
         "units/upd_017/weapons/wpn_fps_pis_welrod_pts/textures/timelines_welrod_gsm")
 
     local part_body = SL_Part:new("wpn_fps_pis_welrod_body_standard_timelines","wpn_fps_pis_welrod", "wpn_fps_pis_welrod_body_standard")
-    part_body:add_fps_material(m_fps)
-    part_body:add_tps_material(m_tps)
+    :add_fps_material(m_fps)
+    :add_tps_material(m_tps)
 
     local part_bolt = SL_Part:new("wpn_fps_pis_welrod_bolt_standard_timelines", "wpn_fps_pis_welrod", "wpn_fps_pis_welrod_bolt_standard")
-    part_bolt:add_fps_material(m_fps)
-    part_bolt:add_tps_material(m_tps)
+    :add_fps_material(m_fps)
+    :add_tps_material(m_tps)
 
     local part_m = SL_Part:new("wpn_fps_pis_welrod_m_standard_timelines", "wpn_fps_pis_welrod","wpn_fps_pis_welrod_m_standard")
-    part_m:add_fps_material(m_fps)
-    part_m:add_tps_material(m_tps)
+    :add_fps_material(m_fps)
+    :add_tps_material(m_tps)
 
     local part_catch = SL_Part:new("wpn_fps_pis_welrod_catch_timelines", "wpn_fps_pis_welrod", "wpn_fps_pis_welrod_catch")
-    part_catch:add_fps_material(m_fps)
-    part_catch:add_tps_material(m_tps)
+    :add_fps_material(m_fps)
+    :add_tps_material(m_tps)
 
     local part_trigger = SL_Part:new("wpn_fps_pis_welrod_trigger_timelines", "wpn_fps_pis_welrod", "wpn_fps_pis_welrod_trigger")
-    part_trigger:add_fps_material(m_fps)
-    part_trigger:add_tps_material(m_tps)
+    :add_fps_material(m_fps)
+    :add_tps_material(m_tps)
 
-    local part_safety = SL_Part:new("wpn_fps_pis_welrod_safety_timelines", "wpn_fps_pis_welrod", "wpn_fps_pis_welrod_safety")
-    part_safety:add_fps_material(m_fps)
-    part_safety:add_tps_material(m_tps)
+    local part_safety = SL_Part:new("wpn_fps_pis_welrod_safety_timelines", "wpn_fps_pis_welrod", "wpn_fps_pis_welrod_safety"):add_fps_material(m_fps):add_tps_material(m_tps)
 
     local skin = SL_Skin:new("sx2_ws_welrod_timelines", "welrod")
-    :set_name_id("sx2_ws_welrod_timelines"):
-    set_weapon_desc_id("sx2_ws_welrod_timelines_desc")
+    skin:set_name_id("sx2_ws_welrod_timelines")
+    skin:set_weapon_desc_id("sx2_ws_welrod_timelines_desc")
     :set_weapon_name_id("sx2_ws_welrod_timelines_name")
     :set_gold_price(50)
     :set_droppable(true)
     :set_rarity("RARITY_COMMON")
-    :set_replaces_parts({
-        wpn_fps_pis_welrod_body_standard = "wpn_fps_pis_welrod_body_standard_timelines",
-        wpn_fps_pis_welrod_bolt_standard = "wpn_fps_pis_welrod_bolt_standard_timelines",
-        wpn_fps_pis_welrod_m_standard = "wpn_fps_pis_welrod_m_standard_timelines",
-        wpn_fps_pis_welrod_catch = "wpn_fps_pis_welrod_catch_timelines",
-        wpn_fps_pis_welrod_trigger = "wpn_fps_pis_welrod_trigger_timelines",
-        wpn_fps_pis_welrod_safety = "wpn_fps_pis_welrod_safety_timelines",
-    })
-
-    SkinLib.AddPart(part_body)
-    SkinLib.AddPart(part_bolt)
-    SkinLib.AddPart(part_m)
-    SkinLib.AddPart(part_catch)
-    SkinLib.AddPart(part_trigger)
-    SkinLib.AddPart(part_safety)
+    skin:add_part(part_body)
+    skin:add_part(part_bolt)
+    skin:add_part(part_m)
+    skin:add_part(part_catch)
+    skin:add_part(part_trigger)
+    skin:add_part(part_safety)
     SkinLib.AddSkin(skin)
 end
