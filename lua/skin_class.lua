@@ -130,3 +130,10 @@ function SL_Skin:add_part(part)
     table.insert(self._skin.parts, part)
     return self
 end
+
+function SL_Skin:add_parts(parts)
+    for _, part in ipairs(parts) do
+        self:add_part(part)
+    end
+    return self
+end
