@@ -1,0 +1,6 @@
+<dynamic_object>
+    <diesel orientation_object="rp_wpn_fps_ass_carbine_b_standard" materials="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_b_standard_garbine" />
+    <graphics>
+        <object name="g_barrel" enabled="true" />
+    </graphics>
+</dynamic_object>

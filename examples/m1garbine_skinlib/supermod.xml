@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<mod
+    name="M1Garbine (SkinLib)"
+    description=""
+    author="shinrax2 and sherbetjutsu"
+    version="0.1"
+    contact=""
+    disable_safe_mode="true"
+    priority="111"
+>
+    <hooks>
+        <pre hook_id="lib/setups/setup" script_path="core.lua" />
+    </hooks>
+
+    <localization default="english">
+		<loc file="english.json" language="english" />
+	</localization>
+
+    <assets load="startup">
+            <file path="assets/wpn_fps_ass_carbine_body_standard_garbine_df.texture" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/textures/wpn_fps_ass_carbine_body_standard_garbine_df.texture" />
+            <file path="assets/wpn_fps_ass_carbine_body_wooden_garbine_df.texture" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/textures/wpn_fps_ass_carbine_body_wooden_garbine_df.texture" />
+
+            <file path="assets/wpn_fps_ass_carbine_body_standard_garbine.model" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_body_standard_garbine.model" />
+            <file path="assets/wpn_fps_ass_carbine_body_standard_garbine.cooked_physics" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_body_standard_garbine.cooked_physics" />
+            <file path="assets/wpn_fps_ass_carbine_body_standard_garbine.material_config" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_body_standard_garbine.material_config" />
+            <file path="assets/wpn_fps_ass_carbine_body_standard_garbine.object" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_body_standard_garbine.object" />
+            <file path="assets/wpn_fps_ass_carbine_body_standard_garbine.unit" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_body_standard_garbine.unit" />
+
+            <file path="assets/wpn_fps_ass_carbine_body_wooden_garbine.model" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_body_wooden_garbine.model" />
+            <file path="assets/wpn_fps_ass_carbine_body_wooden_garbine.cooked_physics" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_body_wooden_garbine.cooked_physics" />
+            <file path="assets/wpn_fps_ass_carbine_body_wooden_garbine.material_config" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_body_wooden_garbine.material_config" />
+            <file path="assets/wpn_fps_ass_carbine_body_wooden_garbine.object" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_body_wooden_garbine.object" />
+            <file path="assets/wpn_fps_ass_carbine_body_wooden_garbine.unit" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_body_wooden_garbine.unit" />
+
+            <file path="assets/wpn_fps_ass_carbine_b_medium_garbine.model" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_b_medium_garbine.model" />
+            <file path="assets/wpn_fps_ass_carbine_b_medium_garbine.cooked_physics" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_b_medium_garbine.cooked_physics" />
+            <file path="assets/wpn_fps_ass_carbine_b_medium_garbine.material_config" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_b_medium_garbine.material_config" />
+            <file path="assets/wpn_fps_ass_carbine_b_medium_garbine.object" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_b_medium_garbine.object" />
+            <file path="assets/wpn_fps_ass_carbine_b_medium_garbine.unit" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_b_medium_garbine.unit" />
+
+            <file path="assets/wpn_fps_ass_carbine_b_short_garbine.model" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_b_short_garbine.model" />
+            <file path="assets/wpn_fps_ass_carbine_b_short_garbine.cooked_physics" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_b_short_garbine.cooked_physics" />
+            <file path="assets/wpn_fps_ass_carbine_b_short_garbine.material_config" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_b_short_garbine.material_config" />
+            <file path="assets/wpn_fps_ass_carbine_b_short_garbine.object" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_b_short_garbine.object" />
+            <file path="assets/wpn_fps_ass_carbine_b_short_garbine.unit" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_b_short_garbine.unit" />
+
+            <file path="assets/wpn_fps_ass_carbine_b_standard_garbine.model" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_b_standard_garbine.model" />
+            <file path="assets/wpn_fps_ass_carbine_b_standard_garbine.cooked_physics" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_b_standard_garbine.cooked_physics" />
+            <file path="assets/wpn_fps_ass_carbine_b_standard_garbine.material_config" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_b_standard_garbine.material_config" />
+            <file path="assets/wpn_fps_ass_carbine_b_standard_garbine.object" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_b_standard_garbine.object" />
+            <file path="assets/wpn_fps_ass_carbine_b_standard_garbine.unit" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_b_standard_garbine.unit" />
+    </assets>
+</mod>

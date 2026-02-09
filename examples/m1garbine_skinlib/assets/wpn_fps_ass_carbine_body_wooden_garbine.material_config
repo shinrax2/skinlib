@@ -1,0 +1,14 @@
+<materials version="3">
+    <material name="wpn_fps_ass_carbine_body_wooden" render_template="generic:CUBE_ENVIRONMENT_MAPPING:DEPTH_SCALING:DIFFUSE_TEXTURE:GLOSS_BLURS_CUBEMAP:GSMA_TEXTURE:NORMALMAP" version="2">
+        <diffuse_texture file="units/vanilla/weapons/wpn_fps_ass_carbine_pts/textures/wpn_fps_ass_carbine_body_wooden_garbine_df"/>
+        <bump_normal_texture file="units/vanilla/weapons/wpn_fps_ass_carbine_pts/textures/wpn_fps_ass_carbine_body_wooden_nm"/>
+        <material_texture file="units/vanilla/weapons/wpn_fps_ass_carbine_pts/textures/wpn_fps_ass_carbine_body_wooden_gsm"/>
+        <reflection_texture type="cubemap" global_texture="current_global_texture"/>
+    </material>
+    <material name="wpn_fps_ass_carbine_upper" render_template="generic:CUBE_ENVIRONMENT_MAPPING:DEPTH_SCALING:DIFFUSE_TEXTURE:GLOSS_BLURS_CUBEMAP:GSMA_TEXTURE:NORMALMAP" version="2">
+    	<diffuse_texture file="units/vanilla/weapons/wpn_fps_ass_carbine_pts/textures/wpn_fps_ass_carbine_upper_df"/>
+        <bump_normal_texture file="units/vanilla/weapons/wpn_fps_ass_carbine_pts/textures/wpn_fps_ass_carbine_upper_nm"/>
+        <material_texture file="units/vanilla/weapons/wpn_fps_ass_carbine_pts/textures/wpn_fps_ass_carbine_upper_gsm"/>
+        <reflection_texture type="cubemap" global_texture="current_global_texture"/>
+    </material>
+</materials>

@@ -1,0 +1,6 @@
+<dynamic_object>
+    <diesel orientation_object="rp_wpn_fps_ass_carbine_body_wooden" materials="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_body_wooden" />
+    <graphics>
+        <object name="g_body" enabled="true" />
+    </graphics>
+</dynamic_object>
