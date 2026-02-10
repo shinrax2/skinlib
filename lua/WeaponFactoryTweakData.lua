@@ -69,6 +69,10 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_weapon_skins", "SkinLib_init_weapo
                 self.parts[part.params.part_id].third_unit = part.params.third_unit
             end
 
+            -- extra fields for network stuff
+            self.parts[part.params.part_id].custom = true
+            self.parts[part.params.part_id].base_part = part.params.base_part
+
             SkinLib._set_injected_part(id)
         end
     end

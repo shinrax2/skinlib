@@ -112,6 +112,38 @@ function SkinLib._add_unique_material(unique_material, material)
     return unique_material
 end
 
+function SkinLib._clean_blueprint(blueprint, factory_id)
+    local new_blueprint = {}
+    local factory = tweak_data.weapon.factory
+
+    for _, part_id in pairs(blueprint) do
+        local part = factory.parts[part_id]
+        if part then
+            if part.custom then
+                local fac = factory[factory_id]
+                if fac and part.base_part then
+                    if table.contains(fac.uses_parts, part.base_part) then
+                        table.insert(new_blueprint, part.base_part)
+                    else
+                        local fac_part = factory.parts[part.base_part]
+                        for _, def_part in pairs(fac.default_blueprint) do
+                            local fac_def_part = factory.parts[def_part]
+                            if fac_def_part.type == fac_part.type then
+                                table.insert(new_blueprint, def_part)
+                                break
+                            end
+                        end
+                    end
+                end
+            else
+                table.insert(new_blueprint, part_id)
+            end
+        end
+    end
+
+    return new_blueprint
+end
+
 -- PUBLIC
 
 ---Registers skin, takes either params table or SL_Skin instance
@@ -166,14 +198,14 @@ end
 
 ---Turns weapon_id into associated factory_id
 ---@param weapon_id string
----@return string
+---@return string|boolean
 function SkinLib.weaponid2factoryid(weapon_id)
-    return SkinLib.weapon_tbl[weapon_id]
+    return SkinLib.weapon_tbl[weapon_id] or false
 end
 
 ---Turns factory_id into associated weapon_id
 ---@param factory_id string
----@return string
+---@return string|boolean
 function SkinLib.factoryid2weaponid(factory_id)
-    return SkinLib.weapon_tbl_reversed[factory_id]
+    return SkinLib.weapon_tbl_reversed[factory_id] or false
 end
