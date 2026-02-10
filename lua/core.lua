@@ -9,6 +9,11 @@ SkinLib._skins = {}
 SkinLib._injected_skins = {}
 SkinLib._parts = {}
 SkinLib._injected_parts = {}
+SkinLib.version ={
+    major = 0,
+    minor = 0,
+    patch = 1
+}
 
 -- PRIVATE
 
@@ -94,4 +99,18 @@ function SkinLib.RegisterPart(params)
     part.params = params
     part.id = params.part_id
     SkinLib._add_part(part)
+end
+
+function SkinLib.RequireVersion(major, minor, patch)
+    local ret = false
+    if major <= SkinLib.version.major then
+        ret = true
+    end
+    if minor <= SkinLib.version.minor or ret == true then
+        ret = true
+    end
+    if patch <= SkinLib.version.patch or ret == true then
+        ret = true
+    end
+    return ret
 end
