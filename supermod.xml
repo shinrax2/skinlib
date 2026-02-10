@@ -12,8 +12,8 @@
 
     <hooks>
         <pre hook_id="lib/setups/setup" script_path="lua/core.lua" />
-        <post hook_id="lib/tweak_data/weapontweakdata" script_path="lua/weapontweakdata.lua" />
-        <post hook_id="lib/tweak_data/weaponfactorytweakdata" script_path="lua/weaponfactorytweakdata.lua" />
+        <post hook_id="lib/tweak_data/weapontweakdata" script_path="lua/WeaponTweakData.lua" />
+        <post hook_id="lib/tweak_data/weaponfactorytweakdata" script_path="lua/WeaponFactoryTweakData.lua" />
         <post hook_id="lib/managers/weaponinventorymanager" script_path="lua/SkinHotfix.lua" />
     </hooks>
 
