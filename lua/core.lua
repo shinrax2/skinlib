@@ -14,6 +14,46 @@ SkinLib.version ={
     minor = 0,
     patch = 1
 }
+SkinLib.weapon_tbl ={
+    -- secondaries
+    c96 = "wpn_fps_pis_c96", -- Mauser C96
+    tt33 = "wpn_fps_pis_tt33", -- TT33
+    georg = "wpn_fps_pis_georg", -- Luger
+    webley = "wpn_fps_pis_webley", -- Webley revolver
+    m1911 = "wpn_fps_pis_m1911", -- M1911
+    welrod = "wpn_fps_pis_welrod", -- Welrod
+    shotty = "wpn_fps_pis_shotty", -- Short double barrel 
+    -- shotguns
+    m1912 = "wpn_fps_sho_m1912", -- ??
+    ithaca = "wpn_fps_sho_ithaca", -- Ithaca
+    browning = "wpn_fps_sho_browning", -- Browning Auto-5
+    geco = "wpn_fps_sho_geco", -- Double barrel shotgun
+    -- SMG
+    sten = "wpn_fps_smg_sten", -- Sten SMG
+    thompson = "wpn_fps_smg_thompson", -- Thompson SMG
+    mp38 = "wpn_fps_smg_mp38", -- MP38
+    sterling = "wpn_fps_smg_sterling", -- Sterling SMG
+    -- assault rifle
+    carbine = "wpn_fps_ass_carbine", -- M1 Carbine
+    garand = "wpn_fps_ass_garand", -- M1 Garand
+    mp44 = "wpn_fps_ass_mp44", -- MP44/STG44
+    -- LMG
+    m1918 = "wpn_fps_lmg_m1918", -- M1918 LMG
+    dp28 = "wpn_fps_lmg_dp28", -- DP28
+    bren = "wpn_fps_lmg_bren", -- Bren
+    mg42 = "wpn_fps_lmg_mg42", -- MG42
+    -- snipers
+    m1903 = "wpn_fps_snp_m1903", -- M1903 Springfield
+    kar_98k = "wpn_fps_snp_kar_98k", -- Mauser K98K
+    lee_enfield = "wpn_fps_snp_lee_enfield", -- Lee-Enfield
+    mosin = "wpn_fps_snp_mosin", -- Mosin-Nagant rifle
+}
+SkinLib.weapon_tbl_reversed = {}
+
+-- fill weapon_tbl_reversed
+for wid, fid in pairs(Skinlib.weapon_tbl) do
+    SkinLib.weapon_tbl_reversed[fid] = wid
+end
 
 -- PRIVATE
 
@@ -74,6 +114,8 @@ end
 
 -- PUBLIC
 
+---Registers skin, takes either params table or SL_Skin instance
+---@param params table
 function SkinLib.RegisterSkin(params)
     local skin = {}
     if params._parts then
@@ -90,6 +132,8 @@ function SkinLib.RegisterSkin(params)
     SkinLib._add_skin(skin)
 end
 
+---Registers part, takes either params table or SL_Part instance
+---@param params table
 function SkinLib.RegisterPart(params)
     local part = {}
     if type(params) == "table" and params._to_tbl then
@@ -101,6 +145,11 @@ function SkinLib.RegisterPart(params)
     SkinLib._add_part(part)
 end
 
+---Compares required version to SkinLib version, returns `true` if requirement is met
+---@param major integer
+---@param minor integer
+---@param patch integer
+---@return boolean
 function SkinLib.RequireVersion(major, minor, patch)
     local ret = false
     if major <= SkinLib.version.major then
@@ -113,4 +162,18 @@ function SkinLib.RequireVersion(major, minor, patch)
         ret = true
     end
     return ret
+end
+
+---Turns weapon_id into associated factory_id
+---@param weapon_id string
+---@return string
+function SkinLib.weaponid2factoryid(weapon_id)
+    return SkinLib.weapon_tbl[weapon_id]
+end
+
+---Turns factory_id into associated weapon_id
+---@param factory_id string
+---@return string
+function SkinLib.factoryid2weaponid(factory_id)
+    return SkinLib.weapon_tbl_reversed[factory_id]
 end

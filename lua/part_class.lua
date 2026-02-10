@@ -113,6 +113,13 @@ end
 
 -- PUBLIC
 
+---Adds first person material to part, first argument can be string or SL_Material instance
+---@param material_name string|table
+---@param bump_normal string|nil
+---@param diffuse string|nil
+---@param material_texture string|nil
+---@param reflection_texture string|nil
+---@return table
 function SL_Part:add_fps_material(material_name, bump_normal, diffuse, material_texture, reflection_texture)
     if type(material_name) == "table" then
         return self:_add_material("fps", material_name:name(), material_name:bump_normal(), material_name:diffuse(), material_name:material(), material_name:reflection())
@@ -121,6 +128,13 @@ function SL_Part:add_fps_material(material_name, bump_normal, diffuse, material_
     end
 end
 
+---Adds third person material to part, first argument can be string or SL_Material instance
+---@param material_name string|table
+---@param bump_normal string|nil
+---@param diffuse string|nil
+---@param material_texture string|nil
+---@param reflection_texture string|nil
+---@return table
 function SL_Part:add_tps_material(material_name, bump_normal, diffuse, material_texture, reflection_texture)
     if type(material_name) == "table" then
         return self:_add_material("tps", material_name:name(), material_name:bump_normal(), material_name:diffuse(), material_name:material(), material_name:reflection())
@@ -129,6 +143,9 @@ function SL_Part:add_tps_material(material_name, bump_normal, diffuse, material_
     end
 end
 
+---Adds unit to part
+---@param unit string
+---@return table
 function SL_Part:add_unit(unit)
     if unit then
         self._part.unit = unit
@@ -136,6 +153,9 @@ function SL_Part:add_unit(unit)
     return self
 end
 
+---Adds third person unit to part
+---@param unit string
+---@return table
 function SL_Part:add_third_unit(unit)
     if unit then
         self._part.third_unit = unit
