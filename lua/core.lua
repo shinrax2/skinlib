@@ -51,7 +51,7 @@ SkinLib.weapon_tbl ={
 SkinLib.weapon_tbl_reversed = {}
 
 -- fill weapon_tbl_reversed
-for wid, fid in pairs(Skinlib.weapon_tbl) do
+for wid, fid in pairs(SkinLib.weapon_tbl) do
     SkinLib.weapon_tbl_reversed[fid] = wid
 end
 
