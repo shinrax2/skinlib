@@ -10,6 +10,10 @@
     priority="991"
 >
 
+    <updates>
+		<update provider="modworkshop" identifier="55400"/>
+	</updates>
+
     <hooks>
         <pre hook_id="lib/setups/setup" script_path="lua/core.lua" />
         <post hook_id="lib/managers/weaponfactorymanager" script_path="lua/WeaponFactoryManager.lua" />

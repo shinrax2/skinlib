@@ -12,6 +12,10 @@
         <pre hook_id="lib/setups/setup" script_path="core.lua" />
     </hooks>
 
+    <updates>
+		<update provider="modworkshop" identifier="55401"/>
+	</updates>
+
     <localization default="english">
 		<loc file="english.json" language="english" />
 	</localization>
