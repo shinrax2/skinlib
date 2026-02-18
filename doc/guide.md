@@ -60,7 +60,7 @@
 
 1. Open & edit the texture for your skin
 2. Export to DDS format, recommended settings (for GIMP):
-   ![recommended settings for dds export](images/export_dds.png)
+![recommended settings for dds export](images/export_dds.png)
 3. Rename `YourTexture.dds` to `YourTexture.texture`
 
 ## Step 3: Writing the code
