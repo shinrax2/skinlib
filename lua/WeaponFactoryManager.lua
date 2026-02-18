@@ -45,8 +45,7 @@ Hooks:PreHook(WeaponFactoryManager, "_read_factory_data", "SkinLib_read_factory_
             table.insert(tweak_data.weapon.factory[part.params.weapon_factory_id].uses_parts, part.params.part_id)
 
             -- insert part
-            tweak_data.weapon.factory.parts[part.params.part_id] = deep_clone(tweak_data.weapon.factory.parts
-                [part.params.base_part])
+            tweak_data.weapon.factory.parts[part.params.part_id] = deep_clone(tweak_data.weapon.factory.parts[part.params.base_part])
             if #unique_materials ~= 0 then
                 tweak_data.weapon.factory.parts[part.params.part_id].materials_fps = table.merge(
                     tweak_data.weapon.factory.parts[part.params.base_part].materials_fps or {}, m_fps)
@@ -67,23 +66,23 @@ Hooks:PreHook(WeaponFactoryManager, "_read_factory_data", "SkinLib_read_factory_
 
     -- handle registered skins
     for id, skin in pairs(SkinLib._get_skins()) do
-        if not SkinLib._is_skin_injected(id) then
-            local si = {}
-            si.dlc = skin.params.dlc or nil
-            si.name_id = skin.params.name_id
-            si.replaces_parts = skin.params.replaces_parts or nil
-            si.weapon_desc_id = skin.params.weapon_desc_id or ""
-            si.weapon_id = skin.params.weapon_id
-            si.weapon_name_id = skin.params.weapon_name_id or nil
-            si.challenge = skin.params.challenge or nil
-            si.droppable = skin.params.droppable or nil
-            si.gold_price = skin.params.gold_price or nil
-            si.rarity = skin.params.rarity or nil
-            si.replaces_units = skin.params.replaces_units or nil
-            si.icon_large = skin.params.icon_large or nil
-
-            tweak_data.weapon.weapon_skins[id] = si
-            SkinLib._set_injected_skin(id)
-        end
-    end
+		if not SkinLib._is_skin_injected(id) then
+			--SkinLib._validate_skin(skin.params, self.factory)
+			local si = {}
+			si.dlc = skin.params.dlc or nil
+			si.name_id = skin.params.name_id
+			si.replaces_parts = skin.params.replaces_parts or nil
+			si.weapon_desc_id = skin.params.weapon_desc_id or nil
+			si.weapon_id = skin.params.weapon_id
+			si.weapon_name_id = skin.params.weapon_name_id or nil
+			si.challenge = skin.params.challenge or nil
+			si.droppable = skin.params.droppable or nil
+			si.gold_price = skin.params.gold_price or nil
+			si.rarity = LootDropTweakData[skin.params.rarity] or nil
+			si.replaces_units = skin.params.replaces_units or nil
+			si.icon_large = skin.params.icon_large or nil
+			tweak_data.weapon.weapon_skins[id] = si
+			SkinLib._set_injected_skin(id)
+		end
+	end
 end)
