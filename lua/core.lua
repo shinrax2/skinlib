@@ -22,9 +22,9 @@ SkinLib.weapon_tbl ={
     webley = "wpn_fps_pis_webley", -- Webley revolver
     m1911 = "wpn_fps_pis_m1911", -- M1911
     welrod = "wpn_fps_pis_welrod", -- Welrod
-    shotty = "wpn_fps_pis_shotty", -- Short double barrel 
+    shotty = "wpn_fps_pis_shotty", -- Pocket Double-Barrel
     -- shotguns
-    m1912 = "wpn_fps_sho_m1912", -- ??
+    m1912 = "wpn_fps_sho_m1912", -- BAR
     ithaca = "wpn_fps_sho_ithaca", -- Ithaca
     browning = "wpn_fps_sho_browning", -- Browning Auto-5
     geco = "wpn_fps_sho_geco", -- Double barrel shotgun
