@@ -13,10 +13,6 @@ function SL_Skin:_to_tbl()
     return self._skin
 end
 
-function SL_Skin:_validate()
-    return true
-end
-
 function SL_Skin:_parts()
     return self._skin.parts
 end

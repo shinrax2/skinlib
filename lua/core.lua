@@ -55,6 +55,11 @@ for wid, fid in pairs(SkinLib.weapon_tbl) do
     SkinLib.weapon_tbl_reversed[fid] = wid
 end
 
+local ids = {
+    texture = Idstring("texture"),
+    unit = Idstring("unit")
+}
+
 -- PRIVATE
 
 function SkinLib._is_skin_injected(skin_id)
@@ -142,6 +147,170 @@ function SkinLib._clean_blueprint(blueprint, factory_id)
     end
 
     return new_blueprint
+end
+
+function SkinLib._validate_part(part, factory)
+    local valid = true
+    local sl = "[SkinLib][SL_Part][_validate_part] "
+
+    -- does part_id already exist?
+    if factory.parts[part.part_id] ~= nil then
+        log(sl .. "part_id is already in use! '" .. part.part_id .. "'")
+        valid = false
+    end
+
+    -- is weapon_factory_id valid?
+    if not factory[part.weapon_factory_id] then
+        log(sl .. "weapon_factory_id is invalid! '" .. part.weapon_factory_id .. "'")
+        valid = false
+    end
+
+    -- does base_part exist?
+    if not factory.parts[part.base_part] then
+        log(sl .. "base_part does not exist! '" .. part.base_part .. "'")
+        valid = false
+    end
+
+    -- set textures loaded?
+    for _, view_type in ipairs({ "fps", "tps" }) do
+        if part[view_type] then
+            for mat, data in pairs(part[view_type]) do
+                for typ, texture in pairs(data) do
+                    if not DB:has(ids["texture"], Idstring(texture)) then
+                        log(sl ..
+                            "part_id: '" ..
+                            part.part_id ..
+                            "' material: '" .. mat .. "' type: '" .. typ .. "' texture: '" .. texture .. "'")
+                        valid = false
+                    end
+                end
+            end
+        end
+    end
+
+    -- set unit loaded?
+    if part.unit then
+        if not DB:has(ids["unit"], Idstring(part.unit)) then
+            valid = false
+        end
+    end
+
+    -- set third_unit loaded?
+    if part.third_unit then
+        if not DB:has(ids["unit"], Idstring(part.third_unit)) then
+            valid = false
+        end
+    end
+
+    return valid
+end
+
+function SkinLib._validate_material(material)
+    local valid = true
+    local sl = "[SkinLib][SL_Material][_validate_material] "
+
+    -- material name set?
+    if not material.name then
+        log(sl .. "material_name not set")
+        valid = false
+    end
+
+    -- set textures loaded?
+    for _, typ in ipairs({"bump_normal", "diffuse", "material", "reflection"}) do
+        local res = material[typ] or nil
+        if res ~= nil then
+            if not DB:has(ids["texture"], Idstring(res)) then
+                valid = false
+                log(sl .. "texture not loaded: " .. res .. ", material: " .. material:name())
+            end
+        end
+    end
+
+    return valid
+end
+
+function SkinLib._validate_skin(skin, factory, guitweakdata)
+    local valid = true
+    local valid_rarity = {"RARITY_COMMON", "RARITY_UNCOMMON", "RARITY_RARE"}
+    local sl = "[SkinLib][SL_Skin][_validate_skin] "
+
+    -- do parts in replaces_parts exist?
+    if skin.replaces_parts and #skin.replaces_parts > 0 then
+        for base, replace in pairs(skin.replaces_parts) do
+            if not factory.parts[base] then
+                valid = false
+                log(sl .. "base_part not found: " .. base .. " skin_id: " .. skin.skin_id)
+            end
+            if not factory.parts[replace] then
+                valid = false
+                log(sl .. "replace_part not found: " .. replace .. " skin_id: " .. skin.skin_id)
+            end
+        end
+    end
+
+    -- weapon_id valid?
+    local id_check = false
+    for id, _ in pairs(SkinLib.weapon_tbl) do
+        if skin.weapon_id == id then
+            id_check = true
+        end
+    end
+    if id_check == false then
+        log(sl .. "invalid weapon_id: " .. skin.weapon_id .. " skin_id: " .. skin.skin_id)
+        valid = false
+    end
+
+    -- challenge data correct?
+
+    -- droppable type?
+    if skin.droppable then
+        if type(skin.droppable) ~= "boolean" then
+            valid = false
+            log(sl .. "droppable wrong type: " .. type(skin.droppable) .. " skin_id: " .. skin.skin_id)
+        end
+    end
+
+    -- gold_price type?
+    if skin.gold_price then
+        if type(skin.gold_price) ~= "number" then
+            valid = false
+            log(sl .. "gold_price wrong type: " .. type(skin.gold_price) .. " skin_id: " .. skin.skin_id)
+        end
+    end
+
+    -- valid rarity?
+    local rarity_check = false
+    for _, rare in ipairs(valid_rarity) do
+        if rare == skin.rarity then
+            rarity_check = true
+        end
+    end
+    if rarity_check == false and skin.rarity ~= nil then
+        valid = false
+        log(sl .. "invalid rarity: " .. skin.rarity .. " skin_id: " .. skin.skin_id)
+    end
+
+    -- units in replaces_units loaded?
+    if skin.replaces_units and #skin.replaces_units > 0 then
+        for typ, unit in pairs(skin.replaces_units) do
+            if not DB:has(ids["unit"], Idstring(unit)) then
+                valid = false
+                log(sl ..  "replaces_units, unit not loaded: " .. unit .. " type: " .. typ .. " skin_id: " .. skin.skin_id)
+            end
+        end
+    end
+
+    -- icon loaded?
+    -- tweak_data.gui is not available when called
+    --[[if skin.icon_large then
+        if not guitweakdata.icons[skin.icon_large] then
+            valid = false
+            log(sl .. "icon_large not found: " .. skin.icon_large .. " skin_id: " .. skin.skin_id)
+        end
+    end]]
+
+
+    return valid
 end
 
 -- PUBLIC

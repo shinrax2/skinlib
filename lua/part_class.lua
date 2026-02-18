@@ -1,9 +1,5 @@
 _G.SL_Part = _G.SL_Part or class()
 
-local sl_part_head = "[SkinLib_Part][_validate]: "
-local ids_texture = Idstring("texture")
-local ids_unit = Idstring("unit")
-
 -- PRIVATE
 
 function SL_Part:init(part_id, weapon_factory_id, base_part)
@@ -17,53 +13,14 @@ function SL_Part:_to_tbl()
     return self._part
 end
 
-function SL_Part:_validate(factory)
-    local valid = true
-
-    -- does part_id already exist?
-    if factory.parts[self._part.part_id] ~= nil then
-        log(sl_part_head .. "part_id is already in use! '" .. self._part.part_id .. "'")
-        valid = false
-    end
-
-    -- is weapon_factory_id valid?
-    if not factory[self._part.weapon_factory_id] then
-        log(sl_part_head .. "weapon_factory_id is invalid! '" .. self._part.weapon_factory_id .. "'")
-        valid = false
-    end
-
-    -- does base_part exist?
-    if not factory.parts[self._part.base_part] then
-        log(sl_part_head .. "base_part does not exist! '" .. self._part.base_part .. "'")
-        valid = false
-    end
-
-    -- set textures loaded?
-    for _, view_type in ipairs({ "fps", "tps" }) do
-        if self._part[view_type] then
-            for mat, data in pairs(self._part[view_type]) do
-                for typ, texture in pairs(data) do
-                    if not DB:has(ids_texture, texture) then
-                        log(sl_part_head ..
-                            "part_id: '" ..
-                            self._part.part_id ..
-                            "' material: '" .. mat .. "' type: '" .. typ .. "' texture: '" .. texture .. "'")
-                        valid = false
-                    end
-                end
-            end
-        end
-    end
-
-    -- set unit loaded?
-
-    -- set third_unit loaded?
-
-
-    return valid
-end
-
 function SL_Part:_add_material(view_type, material_name, bump_normal, diffuse, material_texture, reflection_texture)
+    --[[SkinLib._validate_material({
+        name = material_name or nil,
+        bump_normal = bump_normal or nil,
+        diffuse = diffuse or nil,
+        material = material_texture or nil,
+        reflection = reflection_texture or nil
+    })]]
     if not self._part[view_type] then
         self._part[view_type] = {}
     end
