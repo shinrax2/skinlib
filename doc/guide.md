@@ -59,13 +59,12 @@
 ## Step 2: Editing the textures
 
 1. Open & edit the texture for your skin
-2. Export to DDS format, recommended settings (for GIMP):
+2. Export to DDS format, recommended settings (for GIMP): <br />
 ![recommended settings for dds export](images/export_dds.png)
-3. Rename `YourTexture.dds` to `YourTexture.texture`
+4. Rename `YourTexture.dds` to `YourTexture.texture`
 
 ## Step 3: Writing the code
 
 1. Copy the `skeleton` folder to your `mods` folder and rename it to something unique
 2. In the `supermod.xml` edit the `name`, `author`, etc.
-3. 
-
+3.
