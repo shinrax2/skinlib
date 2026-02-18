@@ -1,8 +1,11 @@
 DOC document params & funcs
-DOC add/link example skin mod
+DOC comment examples
+DOC write step-by-step guide
 
-IMP model overwrite/figure out how?!
+IMP model overwrite/figure out how?! -> fix unit loading bug with SBLT?
 IMP skin:/part:_validate -> external to support json and class method
 
 IMP/TEST grenade/melee overwrites
-TEST MP -> send vanilla skin data to peers
+IMP sync skins in mp to peers who also have them
+
+README

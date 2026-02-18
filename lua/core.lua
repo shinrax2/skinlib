@@ -9,6 +9,56 @@ SkinLib._skins = {}
 SkinLib._injected_skins = {}
 SkinLib._parts = {}
 SkinLib._injected_parts = {}
+SkinLib.version ={
+    major = 0,
+    minor = 0,
+    patch = 1
+}
+SkinLib.weapon_tbl ={
+    -- secondaries
+    c96 = "wpn_fps_pis_c96", -- Mauser C96
+    tt33 = "wpn_fps_pis_tt33", -- TT33
+    georg = "wpn_fps_pis_georg", -- Luger
+    webley = "wpn_fps_pis_webley", -- Webley revolver
+    m1911 = "wpn_fps_pis_m1911", -- M1911
+    welrod = "wpn_fps_pis_welrod", -- Welrod
+    shotty = "wpn_fps_pis_shotty", -- Short double barrel 
+    -- shotguns
+    m1912 = "wpn_fps_sho_m1912", -- ??
+    ithaca = "wpn_fps_sho_ithaca", -- Ithaca
+    browning = "wpn_fps_sho_browning", -- Browning Auto-5
+    geco = "wpn_fps_sho_geco", -- Double barrel shotgun
+    -- SMG
+    sten = "wpn_fps_smg_sten", -- Sten SMG
+    thompson = "wpn_fps_smg_thompson", -- Thompson SMG
+    mp38 = "wpn_fps_smg_mp38", -- MP38
+    sterling = "wpn_fps_smg_sterling", -- Sterling SMG
+    -- assault rifle
+    carbine = "wpn_fps_ass_carbine", -- M1 Carbine
+    garand = "wpn_fps_ass_garand", -- M1 Garand
+    mp44 = "wpn_fps_ass_mp44", -- MP44/STG44
+    -- LMG
+    m1918 = "wpn_fps_lmg_m1918", -- M1918 LMG
+    dp28 = "wpn_fps_lmg_dp28", -- DP28
+    bren = "wpn_fps_lmg_bren", -- Bren
+    mg42 = "wpn_fps_lmg_mg42", -- MG42
+    -- snipers
+    m1903 = "wpn_fps_snp_m1903", -- M1903 Springfield
+    kar_98k = "wpn_fps_snp_kar_98k", -- Mauser K98K
+    lee_enfield = "wpn_fps_snp_lee_enfield", -- Lee-Enfield
+    mosin = "wpn_fps_snp_mosin", -- Mosin-Nagant rifle
+}
+SkinLib.weapon_tbl_reversed = {}
+
+-- fill weapon_tbl_reversed
+for wid, fid in pairs(SkinLib.weapon_tbl) do
+    SkinLib.weapon_tbl_reversed[fid] = wid
+end
+
+local ids = {
+    texture = Idstring("texture"),
+    unit = Idstring("unit")
+}
 
 -- PRIVATE
 
@@ -67,8 +117,206 @@ function SkinLib._add_unique_material(unique_material, material)
     return unique_material
 end
 
+function SkinLib._clean_blueprint(blueprint, factory_id)
+    local new_blueprint = {}
+    local factory = tweak_data.weapon.factory
+
+    for _, part_id in pairs(blueprint) do
+        local part = factory.parts[part_id]
+        if part then
+            if part.custom then
+                local fac = factory[factory_id]
+                if fac and part.base_part then
+                    if table.contains(fac.uses_parts, part.base_part) then
+                        table.insert(new_blueprint, part.base_part)
+                    else
+                        local fac_part = factory.parts[part.base_part]
+                        for _, def_part in pairs(fac.default_blueprint) do
+                            local fac_def_part = factory.parts[def_part]
+                            if fac_def_part.type == fac_part.type then
+                                table.insert(new_blueprint, def_part)
+                                break
+                            end
+                        end
+                    end
+                end
+            else
+                table.insert(new_blueprint, part_id)
+            end
+        end
+    end
+
+    return new_blueprint
+end
+
+function SkinLib._validate_part(part, factory)
+    local valid = true
+    local sl = "[SkinLib][SL_Part][_validate_part] "
+
+    -- does part_id already exist?
+    if factory.parts[part.part_id] ~= nil then
+        log(sl .. "part_id is already in use! '" .. part.part_id .. "'")
+        valid = false
+    end
+
+    -- is weapon_factory_id valid?
+    if not factory[part.weapon_factory_id] then
+        log(sl .. "weapon_factory_id is invalid! '" .. part.weapon_factory_id .. "'")
+        valid = false
+    end
+
+    -- does base_part exist?
+    if not factory.parts[part.base_part] then
+        log(sl .. "base_part does not exist! '" .. part.base_part .. "'")
+        valid = false
+    end
+
+    -- set textures loaded?
+    for _, view_type in ipairs({ "fps", "tps" }) do
+        if part[view_type] then
+            for mat, data in pairs(part[view_type]) do
+                for typ, texture in pairs(data) do
+                    if not DB:has(ids["texture"], Idstring(texture)) then
+                        log(sl ..
+                            "part_id: '" ..
+                            part.part_id ..
+                            "' material: '" .. mat .. "' type: '" .. typ .. "' texture: '" .. texture .. "'")
+                        valid = false
+                    end
+                end
+            end
+        end
+    end
+
+    -- set unit loaded?
+    if part.unit then
+        if not DB:has(ids["unit"], Idstring(part.unit)) then
+            valid = false
+        end
+    end
+
+    -- set third_unit loaded?
+    if part.third_unit then
+        if not DB:has(ids["unit"], Idstring(part.third_unit)) then
+            valid = false
+        end
+    end
+
+    return valid
+end
+
+function SkinLib._validate_material(material)
+    local valid = true
+    local sl = "[SkinLib][SL_Material][_validate_material] "
+
+    -- material name set?
+    if not material.name then
+        log(sl .. "material_name not set")
+        valid = false
+    end
+
+    -- set textures loaded?
+    for _, typ in ipairs({"bump_normal", "diffuse", "material", "reflection"}) do
+        local res = material[typ] or nil
+        if res ~= nil then
+            if not DB:has(ids["texture"], Idstring(res)) then
+                valid = false
+                log(sl .. "texture not loaded: " .. res .. ", material: " .. material:name())
+            end
+        end
+    end
+
+    return valid
+end
+
+function SkinLib._validate_skin(skin, factory, guitweakdata)
+    local valid = true
+    local valid_rarity = {"RARITY_COMMON", "RARITY_UNCOMMON", "RARITY_RARE"}
+    local sl = "[SkinLib][SL_Skin][_validate_skin] "
+
+    -- do parts in replaces_parts exist?
+    if skin.replaces_parts and #skin.replaces_parts > 0 then
+        for base, replace in pairs(skin.replaces_parts) do
+            if not factory.parts[base] then
+                valid = false
+                log(sl .. "base_part not found: " .. base .. " skin_id: " .. skin.skin_id)
+            end
+            if not factory.parts[replace] then
+                valid = false
+                log(sl .. "replace_part not found: " .. replace .. " skin_id: " .. skin.skin_id)
+            end
+        end
+    end
+
+    -- weapon_id valid?
+    local id_check = false
+    for id, _ in pairs(SkinLib.weapon_tbl) do
+        if skin.weapon_id == id then
+            id_check = true
+        end
+    end
+    if id_check == false then
+        log(sl .. "invalid weapon_id: " .. skin.weapon_id .. " skin_id: " .. skin.skin_id)
+        valid = false
+    end
+
+    -- challenge data correct?
+
+    -- droppable type?
+    if skin.droppable then
+        if type(skin.droppable) ~= "boolean" then
+            valid = false
+            log(sl .. "droppable wrong type: " .. type(skin.droppable) .. " skin_id: " .. skin.skin_id)
+        end
+    end
+
+    -- gold_price type?
+    if skin.gold_price then
+        if type(skin.gold_price) ~= "number" then
+            valid = false
+            log(sl .. "gold_price wrong type: " .. type(skin.gold_price) .. " skin_id: " .. skin.skin_id)
+        end
+    end
+
+    -- valid rarity?
+    local rarity_check = false
+    for _, rare in ipairs(valid_rarity) do
+        if rare == skin.rarity then
+            rarity_check = true
+        end
+    end
+    if rarity_check == false and skin.rarity ~= nil then
+        valid = false
+        log(sl .. "invalid rarity: " .. skin.rarity .. " skin_id: " .. skin.skin_id)
+    end
+
+    -- units in replaces_units loaded?
+    if skin.replaces_units and #skin.replaces_units > 0 then
+        for typ, unit in pairs(skin.replaces_units) do
+            if not DB:has(ids["unit"], Idstring(unit)) then
+                valid = false
+                log(sl ..  "replaces_units, unit not loaded: " .. unit .. " type: " .. typ .. " skin_id: " .. skin.skin_id)
+            end
+        end
+    end
+
+    -- icon loaded?
+    -- tweak_data.gui is not available when called
+    --[[if skin.icon_large then
+        if not guitweakdata.icons[skin.icon_large] then
+            valid = false
+            log(sl .. "icon_large not found: " .. skin.icon_large .. " skin_id: " .. skin.skin_id)
+        end
+    end]]
+
+
+    return valid
+end
+
 -- PUBLIC
 
+---Registers skin, takes either params table or SL_Skin instance
+---@param params table
 function SkinLib.RegisterSkin(params)
     local skin = {}
     if params._parts then
@@ -85,6 +333,8 @@ function SkinLib.RegisterSkin(params)
     SkinLib._add_skin(skin)
 end
 
+---Registers part, takes either params table or SL_Part instance
+---@param params table
 function SkinLib.RegisterPart(params)
     local part = {}
     if type(params) == "table" and params._to_tbl then
@@ -94,4 +344,37 @@ function SkinLib.RegisterPart(params)
     part.params = params
     part.id = params.part_id
     SkinLib._add_part(part)
+end
+
+---Compares required version to SkinLib version, returns `true` if requirement is met
+---@param major integer
+---@param minor integer
+---@param patch integer
+---@return boolean
+function SkinLib.RequireVersion(major, minor, patch)
+    local ret = false
+    if major <= SkinLib.version.major then
+        ret = true
+    end
+    if minor <= SkinLib.version.minor or ret == true then
+        ret = true
+    end
+    if patch <= SkinLib.version.patch or ret == true then
+        ret = true
+    end
+    return ret
+end
+
+---Turns weapon_id into associated factory_id
+---@param weapon_id string
+---@return string|boolean
+function SkinLib.weaponid2factoryid(weapon_id)
+    return SkinLib.weapon_tbl[weapon_id] or false
+end
+
+---Turns factory_id into associated weapon_id
+---@param factory_id string
+---@return string|boolean
+function SkinLib.factoryid2weaponid(factory_id)
+    return SkinLib.weapon_tbl_reversed[factory_id] or false
 end

@@ -3,7 +3,7 @@
     name="SkinLib"
     description="Library to add Skins"
     author="shinrax2"
-    version="0.1"
+    version="0.0.1"
     contact="https://github.com/shinrax2/SkinLib"
     disable_safe_mode="true"
     is_library="true"
@@ -14,6 +14,7 @@
         <pre hook_id="lib/setups/setup" script_path="lua/core.lua" />
         <post hook_id="lib/managers/weaponfactorymanager" script_path="lua/weaponfactorymanager.lua" />
         <post hook_id="lib/managers/weaponinventorymanager" script_path="lua/SkinHotfix.lua" />
+        <post hook_id="lib/units/beings/player/playerinventory" script_path="lua/PlayerInventory.lua" />
     </hooks>
 
 </mod>
