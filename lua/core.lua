@@ -231,7 +231,7 @@ end
 
 function SkinLib._validate_skin(skin, factory, guitweakdata)
     local valid = true
-    local valid_rarity = {"RARITY_COMMON", "RARITY_UNCOMMON", "RARITY_RARE"}
+    local valid_rarity = {"loot_rarity_common", "loot_rarity_uncommon", "loot_rarity_rare"}
     local sl = "[SkinLib][SL_Skin][_validate_skin] "
 
     -- do parts in replaces_parts exist?
