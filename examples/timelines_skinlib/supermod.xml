@@ -12,6 +12,10 @@
         <pre hook_id="lib/setups/setup" script_path="core.lua" />
     </hooks>
 
+    <dependencies>
+		<dependency name="SkinLib" download_url="https://api.modworkshop.net/mods/55400/download" />
+	</dependencies>
+
     <localization default="english">
 		<loc file="english.json" language="english" />
 	</localization>

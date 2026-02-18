@@ -12,6 +12,10 @@
 	</updates>
     -->
 
+    <dependencies>
+		<dependency name="SkinLib" download_url="https://api.modworkshop.net/mods/55400/download" />
+	</dependencies>
+
     <localization>
         <loc file="english.json" language="english" />
     </localization>
