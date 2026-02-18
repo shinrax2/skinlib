@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<mod name="YourSkinModName"
+      description="Your description"
+      author="Your Name"
+      version="1"
+>
+
+    <!--
+    Uncomment this and add your modworkshop mod identifier to enable auto-updates
+	<updates>
+		<update provider="modworkshop" identifier=""/>
+	</updates>
+    -->
+
+    <localization>
+        <loc file="english.json" language="english" />
+    </localization>
+
+    <hooks>
+        <pre hook_id="lib/setups/setup" script_path="lua/core.lua" />
+    </hooks>
+</mod>
