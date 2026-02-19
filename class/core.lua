@@ -1,7 +1,3 @@
-dofile(ModPath .. "lua/part_class.lua")
-dofile(ModPath .. "lua/skin_class.lua")
-dofile(ModPath .. "lua/material_class.lua")
-
 _G.SkinLib = _G.SkinLib or {}
 SkinLib.path = ModPath
 SkinLib.data = SavePath
