@@ -18,6 +18,7 @@
         <pre hook_id="lib/setups/setup" script_path="hooks/Setup.lua" /> <!-- setup classes -->
         <post hook_id="lib/managers/weaponfactorymanager" script_path="hooks/WeaponFactoryManager.lua" /> <!-- inject skin data -->
         <post hook_id="lib/units/beings/player/playerinventory" script_path="hooks/PlayerInventory.lua" /> <!-- prevent broken weapons for peers -->
+        <post hook_id="lib/managers/menu/raid_menu/controls/raidguicontrolrotateunit" script_path="hooks/RaidGUIControlRotateUnit.lua" /> <!-- allow yaw AND roll rotation on weapon preview -->
         <post hook_id="lib/managers/weaponinventorymanager" script_path="hooks/WeaponInventoryManager.lua" />  <!-- hotfix for vanilla crash -->
         <post hook_id="lib/units/weapons/dp28raycastweaponbase" script_path="hooks/DP28RaycastWeaponBase.lua" /> <!-- hotfix for dp28 crash -->
     </hooks>
