@@ -1,4 +1,5 @@
 ## next:
+- enable extra rotation on weapon/skin selection
 
 ## 0.0.2:
 - fixed crash when firing with dp28 skin
