@@ -19,6 +19,7 @@
         <post hook_id="lib/managers/weaponfactorymanager" script_path="lua/WeaponFactoryManager.lua" />
         <post hook_id="lib/managers/weaponinventorymanager" script_path="lua/SkinHotfix.lua" />
         <post hook_id="lib/units/beings/player/playerinventory" script_path="lua/PlayerInventory.lua" />
+        <post hook_id="lib/units/weapons/dp28raycastweaponbase" script_path="lua/DP28Fix.lua" />
     </hooks>
 
 </mod>

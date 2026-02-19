@@ -7,3 +7,4 @@ Check out the [Step-by-Step guide](doc/guide.md) or the [examples](examples/time
 - BangL: feedback for API improvements & fixes
 - PunishedBernadetta: help with testing
 - SideTrackGames: explaining me stuff
+- BeardLib: code for cleaning weapon blueprints for peers
