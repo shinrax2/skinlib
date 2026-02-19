@@ -60,6 +60,10 @@ Hooks:PreHook(WeaponFactoryManager, "_read_factory_data", "SkinLib_read_factory_
                 tweak_data.weapon.factory.parts[part.params.part_id].third_unit = part.params.third_unit
             end
 
+            -- custom fields for our network code
+            tweak_data.weapon.factory.parts[part.params.part_id].custom = true
+            tweak_data.weapon.factory.parts[part.params.part_id].base_part = part.params.base_part
+
             SkinLib._set_injected_part(id)
         end
     end
