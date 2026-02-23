@@ -1,4 +1,6 @@
 ## next:
+
+## 0.0.3:
 - enabled extra rotation on weapon/skin selection
 - fix your weapons showing up broken for other players
 
