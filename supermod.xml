@@ -21,6 +21,8 @@
         <post hook_id="lib/managers/menu/raid_menu/controls/raidguicontrolrotateunit" script_path="hooks/RaidGUIControlRotateUnit.lua" /> <!-- allow yaw AND roll rotation on weapon preview -->
         <post hook_id="lib/managers/weaponinventorymanager" script_path="hooks/WeaponInventoryManager.lua" />  <!-- hotfix for vanilla crash -->
         <post hook_id="lib/units/weapons/dp28raycastweaponbase" script_path="hooks/DP28RaycastWeaponBase.lua" /> <!-- hotfix for dp28 crash -->
+
+        <post hook_id="lib/network/base/basenetworksession" script_path="hooks/BaseNetworkSession.lua" /> <!-- networking-->
     </hooks>
 
 </mod>

@@ -7,4 +7,7 @@ IMP skin:/part:_validate -> external to support json and class method
 IMP/TEST grenade/melee overwrites
 IMP sync skins in mp to peers who also have them
 
+IDEA sound overrides for skins
+IDEA kübelwagen skins
+
 FIX skins not resetting to original
