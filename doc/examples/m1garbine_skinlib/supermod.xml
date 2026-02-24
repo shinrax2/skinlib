@@ -10,19 +10,14 @@
         <pre hook_id="lib/setups/setup" script_path="core.lua" />
     </hooks>
 
-    <dependencies>
-        <dependency name="SkinLib" download_url="https://api.modworkshop.net/mods/55400/download" />
-    </dependencies>
-
     <localization default="english">
-        <loc file="english.json" language="english" />
-    </localization>
+		<loc file="english.json" language="english" />
+	</localization>
 
     <assets load="startup">
             <file path="assets/wpn_fps_ass_carbine_body_standard_garbine_df.texture" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/textures/wpn_fps_ass_carbine_body_standard_garbine_df.texture" />
             <file path="assets/wpn_fps_ass_carbine_body_wooden_garbine_df.texture" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/textures/wpn_fps_ass_carbine_body_wooden_garbine_df.texture" />
 
-            <!-- LOADING .unit FILES BREAKES GAME DUE TO SBLT BUG
             <file path="assets/wpn_fps_ass_carbine_body_standard_garbine.model" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_body_standard_garbine.model" />
             <file path="assets/wpn_fps_ass_carbine_body_standard_garbine.cooked_physics" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_body_standard_garbine.cooked_physics" />
             <file path="assets/wpn_fps_ass_carbine_body_standard_garbine.material_config" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_body_standard_garbine.material_config" />
@@ -51,6 +46,6 @@
             <file path="assets/wpn_fps_ass_carbine_b_standard_garbine.cooked_physics" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_b_standard_garbine.cooked_physics" />
             <file path="assets/wpn_fps_ass_carbine_b_standard_garbine.material_config" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_b_standard_garbine.material_config" />
             <file path="assets/wpn_fps_ass_carbine_b_standard_garbine.object" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_b_standard_garbine.object" />
-            <file path="assets/wpn_fps_ass_carbine_b_standard_garbine.unit" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_b_standard_garbine.unit" /> -->
+            <file path="assets/wpn_fps_ass_carbine_b_standard_garbine.unit" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/wpn_fps_ass_carbine_b_standard_garbine.unit" />
     </assets>
 </mod>
