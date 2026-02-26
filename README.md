@@ -8,3 +8,5 @@ Check out the [Step-by-Step guide](doc/guide.md) or the [examples](doc/examples/
 - PunishedBernadetta: help with testing
 - SideTrackGames: explaining me stuff
 - BeardLib: code for cleaning weapon blueprints for peers
+- Dribbleondo: textures for timelines example mod
+- sherbetjutsu: textures & model for m1 garbine example mod
