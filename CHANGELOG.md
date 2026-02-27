@@ -1,4 +1,5 @@
 ## next:
+- fixed "Original" skin getting overwritten when previewing/equiping a SkinLib skin
 
 ## 0.0.3:
 - enabled extra rotation on weapon/skin selection

@@ -1,10 +1,8 @@
 DOC comment examples
 DOC write step-by-step guide
 
-IMP model overwrite/figure
+IMP model overwrite examples
 IMP skin:/part:_validate -> external to support json and class method
 
 IMP/TEST grenade/melee overwrites
 IMP sync skins in mp to peers who also have them
-
-FIX skins not resetting to original

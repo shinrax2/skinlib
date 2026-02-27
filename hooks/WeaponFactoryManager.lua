@@ -3,6 +3,24 @@
 -- Hooks:Register("SkinLibCollectData") funny BLT-design flaw: you actually never need to call this register func at all, everything will work perfectly fine without it.
 
 Hooks:PreHook(WeaponFactoryManager, "_read_factory_data", "SkinLib_read_factory_data", function(self)
+    --[[
+
+    -- dev code to extract weapon part ids & factory ids
+    local ids = {}
+    for _, factory_id in pairs(SkinLib.weapon_tbl) do
+        ids[factory_id] = {}
+        for _, part_id in pairs(tweak_data.weapon.factory[factory_id].uses_parts) do
+            ids[factory_id][#ids[factory_id]+1] = part_id
+        end
+    end
+    local f = io.open("part_ids.json", "w")
+    if f then
+        f:write(json.encode(ids))
+        f:close()
+    end
+    
+    ]]
+
     -- collect parts & skins from mods
     Hooks:Call("SkinLibCollectData", SkinLib)
 
@@ -47,10 +65,15 @@ Hooks:PreHook(WeaponFactoryManager, "_read_factory_data", "SkinLib_read_factory_
             -- insert part
             tweak_data.weapon.factory.parts[part.params.part_id] = deep_clone(tweak_data.weapon.factory.parts[part.params.base_part])
             if #unique_materials ~= 0 then
-                tweak_data.weapon.factory.parts[part.params.part_id].materials_fps = table.merge(
-                    tweak_data.weapon.factory.parts[part.params.base_part].materials_fps or {}, m_fps)
-                tweak_data.weapon.factory.parts[part.params.part_id].materials_tps = table.merge(
-                    tweak_data.weapon.factory.parts[part.params.base_part].materials_tps or {}, m_tps)
+                -- fix "Original" skin bug
+                tweak_data.weapon.factory.parts[part.params.base_part].unique_materials = SkinLib._fix_tbl[part.params.base_part]["unique"]
+                tweak_data.weapon.factory.parts[part.params.base_part].materials_fps = SkinLib._fix_tbl[part.params.base_part]["fps"]
+                tweak_data.weapon.factory.parts[part.params.base_part].materials_tps = SkinLib._fix_tbl[part.params.base_part]["tps"]
+
+
+                -- add skin data to part
+                tweak_data.weapon.factory.parts[part.params.part_id].materials_fps = m_fps
+                tweak_data.weapon.factory.parts[part.params.part_id].materials_tps = m_tps
                 tweak_data.weapon.factory.parts[part.params.part_id].unique_materials = unique_materials
             end
             if part.params.unit ~= nil then

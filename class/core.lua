@@ -51,6 +51,9 @@ for wid, fid in pairs(SkinLib.weapon_tbl) do
     SkinLib.weapon_tbl_reversed[fid] = wid
 end
 
+-- fix "Original" skin bug
+dofile(ModPath .. "class/fix_original_skin.lua")
+
 local ids = {
     texture = Idstring("texture"),
     unit = Idstring("unit")
