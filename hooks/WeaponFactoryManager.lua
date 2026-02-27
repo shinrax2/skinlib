@@ -66,9 +66,11 @@ Hooks:PreHook(WeaponFactoryManager, "_read_factory_data", "SkinLib_read_factory_
             tweak_data.weapon.factory.parts[part.params.part_id] = deep_clone(tweak_data.weapon.factory.parts[part.params.base_part])
             if #unique_materials ~= 0 then
                 -- fix "Original" skin bug
-                tweak_data.weapon.factory.parts[part.params.base_part].unique_materials = SkinLib._fix_tbl[part.params.base_part]["unique"]
-                tweak_data.weapon.factory.parts[part.params.base_part].materials_fps = SkinLib._fix_tbl[part.params.base_part]["fps"]
-                tweak_data.weapon.factory.parts[part.params.base_part].materials_tps = SkinLib._fix_tbl[part.params.base_part]["tps"]
+                if SkinLib._fix_tbl[part.params.base_part] then
+                    tweak_data.weapon.factory.parts[part.params.base_part].unique_materials = SkinLib._fix_tbl[part.params.base_part]["unique"]
+                    tweak_data.weapon.factory.parts[part.params.base_part].materials_fps = SkinLib._fix_tbl[part.params.base_part]["fps"]
+                    tweak_data.weapon.factory.parts[part.params.base_part].materials_tps = SkinLib._fix_tbl[part.params.base_part]["tps"]
+                end
 
 
                 -- add skin data to part
