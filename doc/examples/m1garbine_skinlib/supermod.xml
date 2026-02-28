@@ -14,6 +14,10 @@
 		<loc file="english.json" language="english" />
 	</localization>
 
+    <updates>
+		<update provider="modworkshop" identifier="55507"/>
+	</updates>
+
     <assets load="startup">
             <file path="assets/wpn_fps_ass_carbine_body_standard_garbine_df.texture" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/textures/wpn_fps_ass_carbine_body_standard_garbine_df.texture" />
             <file path="assets/wpn_fps_ass_carbine_body_wooden_garbine_df.texture" name="units/vanilla/weapons/wpn_fps_ass_carbine_pts/textures/wpn_fps_ass_carbine_body_wooden_garbine_df.texture" />

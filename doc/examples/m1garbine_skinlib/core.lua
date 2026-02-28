@@ -41,7 +41,7 @@ Hooks:Add("SkinLibCollectData", "M1Garbine.SkinLibCollectData",
         :set_name_id("sx2_ws_m1garbine")
         :set_weapon_name_id("sx2_ws_m1garbine_name")
         :set_weapon_desc_id("sx2_ws_m1garbine_desc")
-        :set_gold_price(1)
+        :set_gold_price(250)
         :add_parts({
             b_short,
             b_medium,
