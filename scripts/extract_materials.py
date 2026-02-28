@@ -67,8 +67,7 @@ for w, ptbl in weapons.items():
                 pass
         else:
             nf.append(tps_file)
-        weapon[p] = entry
-    tbl[w] = weapon
+        tbl[p] = entry
 
 
 with open(out, "w") as f:
