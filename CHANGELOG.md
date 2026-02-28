@@ -1,4 +1,6 @@
 ## next:
+
+## 0.0.4:
 - fixed "Original" skin getting overwritten when previewing/equiping a SkinLib skin
 
 ## 0.0.3:
