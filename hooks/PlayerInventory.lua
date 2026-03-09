@@ -57,6 +57,12 @@ function PlayerInventory:_send_equipped_weapon(send_equipped_weapon_type)
 	local blueprint_string = self:equipped_unit():base().blueprint_to_string and self:equipped_unit():base():blueprint_to_string() or ""
 	local cosmetics_id = self:equipped_unit():base().get_cosmetics_id and self:equipped_unit():base():get_cosmetics_id()
 
+	-- fix custom throwables showing up as nothing for peers
+	if send_equipped_weapon_type == PlayerInventory.SEND_WEAPON_TYPE_PLAYER_MELEE_GRENADE and tweak_data.weapon.weapon_skins[cosmetics_id] and tweak_data.weapon.weapon_skins[cosmetics_id].custom then
+		cosmetics_id = nil
+	end
+
+	-- fix custom skins resulting in broken weapon for peers
 	local factory_id = SkinLib.weaponid2factoryid(equipped_weapon_identifier)
 	if factory_id ~= false  and factory_id ~= nil and blueprint_string ~= "" then
 		blueprint_string = bp_pack(SkinLib._clean_blueprint(bp_unpack(blueprint_string, factory_id), factory_id), factory_id)

@@ -1,4 +1,5 @@
 ## next:
+- fixed custom throwable skins been shown as nothing to peers
 
 ## 0.0.5:
 - fixed crash with throwable skins
