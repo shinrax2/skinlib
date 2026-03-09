@@ -21,6 +21,6 @@
     </localization>
 
     <hooks>
-        <pre hook_id="lib/setups/setup" script_path="lua/core.lua" />
+        <pre hook_id="lib/setups/setup" script_path="core.lua" />
     </hooks>
 </mod>
