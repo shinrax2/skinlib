@@ -1,5 +1,8 @@
 ## next:
 
+## 0.0.5:
+- fixed crash with throwable skins
+
 ## 0.0.4:
 - fixed "Original" skin getting overwritten when previewing/equiping a SkinLib skin
 
