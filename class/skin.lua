@@ -89,16 +89,6 @@ function SL_Skin:set_challenge(challenge)
     return self
 end
 
----Sets icon for skin
----@param icon string
----@return table
-function SL_Skin:set_icon_large(icon)
-    if icon then
-        self._skin.icon_large = icon
-    end
-    return self
-end
-
 ---Sets unit to replace
 ---@param base_unit string
 ---@param replace_unit string

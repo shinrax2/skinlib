@@ -109,7 +109,6 @@ Hooks:PreHook(WeaponFactoryManager, "_read_factory_data", "SkinLib_read_factory_
 			si.gold_price = skin.params.gold_price or nil
 			si.rarity = LootDropTweakData[skin.params.rarity] or nil
 			si.replaces_units = skin.params.replaces_units or nil
-			si.icon_large = skin.params.icon_large or nil
 			tweak_data.weapon.weapon_skins[id] = si
 			SkinLib._set_injected_skin(id)
 		end
