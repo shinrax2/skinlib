@@ -34,7 +34,7 @@ SkinLib.weapon_tbl ={
     garand = "wpn_fps_ass_garand", -- M1 Garand
     mp44 = "wpn_fps_ass_mp44", -- MP44/STG44
     -- LMG
-    m1918 = "wpn_fps_lmg_m1918", -- M1918 LMG
+    m1918 = "wpn_fps_lmg_m1918", -- M1918 LMG/BAR
     dp28 = "wpn_fps_lmg_dp28", -- DP28
     bren = "wpn_fps_lmg_bren", -- Bren
     mg42 = "wpn_fps_lmg_mg42", -- MG42
@@ -318,7 +318,7 @@ end
 ---@param params table
 function SkinLib.RegisterSkin(params)
     local skin = {}
-    if params._parts then
+    if params._parts and params:_parts() ~= nil then
         for _, part in ipairs(params:_parts()) do
             SkinLib.RegisterPart(part)
         end
