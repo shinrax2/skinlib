@@ -141,3 +141,13 @@ function SL_Skin:add_parts(parts)
     end
     return self
 end
+
+---Sets icon_large for skin, used in reward screen
+---@param icon string
+---@return table
+function SL_Skin:set_icon_large(icon)
+    if icon then
+        self._skin.icon_large = icon
+    end
+    return self
+end
