@@ -1,0 +1,7 @@
+<dynamic_object>
+    <diesel orientation_object="rp_wpn_fps_gre_d343_husk" materials="units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_husk_koishi" />
+    <graphics>
+        <object name="g_grenade" enabled="true" />
+        <object name="s_grenade" enabled="true" shadow_caster="true" />
+    </graphics>
+</dynamic_object>

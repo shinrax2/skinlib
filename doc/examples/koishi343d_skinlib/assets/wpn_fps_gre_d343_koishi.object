@@ -1,0 +1,13 @@
+<dynamic_object>
+    <diesel orientation_object="rp_wpn_fps_gre_d343_husk" materials="units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_koishi" />
+    <bodies>
+        <body enabled="true" name="dynamic_body" template="small_prop" friction="0.05" sweep="true" restitution="0.4" ang_damping="0.01" pushed_by_mover="false">
+            <object name="rp_wpn_fps_gre_d343_husk" />
+            <object name="c_convex" collision_type="convex" mass="0.5" padding="-2.5" />
+        </body>
+    </bodies>
+    <graphics>
+        <object name="g_grenade" enabled="true" />
+        <object name="s_grenade" enabled="true" shadow_caster="true" />
+    </graphics>
+</dynamic_object>

@@ -1,0 +1,10 @@
+<materials version="3">
+    <material name="Default" render_template="generic" version="2" />
+    <material name="shadow_caster" render_template="shadow_caster_only" version="2" />
+    <material name="wpn_third_gre_d343" render_template="generic:CUBE_ENVIRONMENT_MAPPING:DIFFUSE_TEXTURE:GLOSS_BLURS_CUBEMAP:GSMA_TEXTURE:NORMALMAP" version="2">
+        <diffuse_texture file="units/upd_003/weapons/wpn_fps_gre_d343/textures/wpn_third_gre_d343_koishi_df"/>
+        <bump_normal_texture file="units/upd_003/weapons/wpn_fps_gre_d343/textures/wpn_third_gre_d343_koishi_nm"/>
+        <material_texture file="units/upd_003/weapons/wpn_fps_gre_d343/textures/wpn_third_gre_d343_koishi_gsm"/>
+        <reflection_texture type="cubemap" global_texture="current_global_texture"/>
+    </material>
+</materials>

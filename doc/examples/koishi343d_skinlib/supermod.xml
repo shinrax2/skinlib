@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<mod 
+    name="Koishi 343d SkinLib"
+    description="SkinLib port of Woulds' Koishi 343d override"
+    author="shinrax2 and woulds"
+    version="1"
+>
+
+	<updates>
+		<update provider="modworkshop" identifier="55739"/>
+	</updates>
+
+    <dependencies>
+		<dependency name="SkinLib" download_url="https://api.modworkshop.net/mods/55400/download" />
+	</dependencies>
+
+    <localization>
+        <loc file="english.json" language="english" />
+    </localization>
+
+    <hooks>
+        <pre hook_id="lib/setups/setup" script_path="core.lua" />
+    </hooks>
+
+    <assets>
+        <!-- <file path="assets/textures/koishi_d343_icon.texture" name="ui/atlas/koishi_d343_icon.texture" /> -->
+
+        <file path="assets/textures/wpn_fps_gre_d343_koishi_df.texture" name="units/upd_003/weapons/wpn_fps_gre_d343/textures/wpn_fps_gre_d343_koishi_df.texture" />
+        <file path="assets/textures/wpn_fps_gre_d343_koishi_gsm.texture" name="units/upd_003/weapons/wpn_fps_gre_d343/textures/wpn_fps_gre_d343_koishi_gsm.texture" />
+        <file path="assets/textures/wpn_fps_gre_d343_koishi_nm.texture" name="units/upd_003/weapons/wpn_fps_gre_d343/textures/wpn_fps_gre_d343_koishi_nm.texture" />
+
+        <file path="assets/textures/wpn_third_gre_d343_koishi_df.texture"   name="units/upd_003/weapons/wpn_fps_gre_d343/textures/wpn_third_gre_d343_koishi_df.texture" />
+        <file path="assets/textures/wpn_third_gre_d343_koishi_gsm.texture"  name="units/upd_003/weapons/wpn_fps_gre_d343/textures/wpn_third_gre_d343_koishi_gsm.texture" />
+        <file path="assets/textures/wpn_third_gre_d343_koishi_nm.texture"   name="units/upd_003/weapons/wpn_fps_gre_d343/textures/wpn_third_gre_d343_koishi_nm.texture" />
+
+        <file path="assets/wpn_fps_gre_d343_hand_koishi.cooked_physics" name="units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_hand_koishi.cooked_physics" />
+        <file path="assets/wpn_fps_gre_d343_hand_koishi.material_config" name="units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_hand_koishi.material_config" />
+        <file path="assets/wpn_fps_gre_d343_hand_koishi.model" name="units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_hand_koishi.model" />
+        <file path="assets/wpn_fps_gre_d343_hand_koishi.object" name="units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_hand_koishi.object" />
+        <file path="assets/wpn_fps_gre_d343_hand_koishi.sequence_manager" name="units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_hand_koishi.sequence_manager" />
+        <file path="assets/wpn_fps_gre_d343_hand_koishi.unit" name="units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_hand_koishi.unit" />
+
+        <file path="assets/wpn_fps_gre_d343_husk_koishi.cooked_physics" name="units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_husk_koishi.cooked_physics" />
+        <file path="assets/wpn_fps_gre_d343_husk_koishi.material_config" name="units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_husk_koishi.material_config" />
+        <file path="assets/wpn_fps_gre_d343_husk_koishi.model" name="units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_husk_koishi.model" />
+        <file path="assets/wpn_fps_gre_d343_husk_koishi.object" name="units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_husk_koishi.object" />
+        <file path="assets/wpn_fps_gre_d343_husk_koishi.unit" name="units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_husk_koishi.unit" />
+
+        <file path="assets/wpn_fps_gre_d343_koishi.cooked_physics" name="units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_koishi.cooked_physics" />
+        <file path="assets/wpn_fps_gre_d343_koishi.material_config" name="units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_koishi.material_config" />
+        <file path="assets/wpn_fps_gre_d343_koishi.model" name="units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_koishi.model" />
+        <file path="assets/wpn_fps_gre_d343_koishi.object" name="units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_koishi.object" />
+        <file path="assets/wpn_fps_gre_d343_koishi.unit" name="units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_koishi.unit" />
+    </assets>
+</mod>

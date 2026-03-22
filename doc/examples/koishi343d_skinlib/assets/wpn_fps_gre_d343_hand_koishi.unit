@@ -1,0 +1,19 @@
+<unit type="item" slot="14">
+	<object file="units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_hand_koishi" />
+	<dependencies>
+		<depends_on bnk="soundbanks/weapon_bombs" />
+	</dependencies>
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+		<extension name="base" class="NpcGrenade">
+			<var name="name_id" value="d343" />
+		</extension>
+		<extension name="damage" class="UnitDamage" >
+			<var name="_collision_event" value="grenade_collision" />
+			<var name="_collision_sfx_quite_time" value="0.1" />
+		</extension>
+	</extensions>
+	<sounds>
+		<default_soundsource source="rp_wpn_fps_gre_d343" />
+	</sounds>
+</unit>

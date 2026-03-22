@@ -1,0 +1,25 @@
+<unit type="item" slot="14">
+	<network sync="spawn" />
+	<dependencies>
+        <depends_on effect="effects/vanilla/explosions/exp_hand_grenade_001" />
+        <depends_on effect="effects/vanilla/impacts/imp_stone_explosion_001" />
+        <depends_on effect="effects/vanilla/impacts/imp_metal_explosion_001" />
+        <depends_on effect="effects/vanilla/impacts/imp_dirt_explosion_001" />
+        <depends_on bnk="soundbanks/weapon_bombs" />
+    </dependencies>
+    <object file="units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_koishi" />
+    <extensions>
+        <extension name="waypoint" class="WaypointExt"/> <!-- Before FragGrenade -->
+        <extension name="base" class="FragGrenade">
+            <var name="name_id" value="d343" />
+        </extension>        
+        <extension name="unit_data" class="ScriptUnitData" />
+        <extension name="damage" class="UnitDamage" >
+            <var name="_collision_event" value="grenade_collision" />
+            <var name="_collision_sfx_quite_time" value="0.1" />
+        </extension>
+    </extensions>
+    <sounds>
+        <default_soundsource source="rp_wpn_fps_gre_d343_husk" />
+    </sounds>
+</unit>
