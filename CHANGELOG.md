@@ -1,4 +1,6 @@
 ## next:
+
+## 0.0.6:
 - fixed custom throwable skins been shown as nothing to peers
 
 ## 0.0.5:
