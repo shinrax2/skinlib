@@ -113,6 +113,7 @@ Hooks:PreHook(WeaponFactoryManager, "_read_factory_data", "SkinLib_read_factory_
 
             -- custom fields
             si.custom = true
+            si.hud_icon = skin.params.hud_icon or nil
 
 			tweak_data.weapon.weapon_skins[id] = si
 			SkinLib._set_injected_skin(id)

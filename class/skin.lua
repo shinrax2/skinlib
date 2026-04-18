@@ -151,3 +151,13 @@ function SL_Skin:set_icon_large(icon)
     end
     return self
 end
+
+---Sets hud_icon for skin
+---@param icon string|table
+---@return table
+function SL_Skin:set_hud_icon(icon)
+    if icon then
+        self._skin.hud_icon = icon
+    end
+    return self
+end
