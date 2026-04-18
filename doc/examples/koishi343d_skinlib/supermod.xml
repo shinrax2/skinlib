@@ -3,7 +3,7 @@
     name="Koishi 343d SkinLib"
     description="SkinLib port of Woulds' Koishi 343d override"
     author="shinrax2 and woulds"
-    version="1"
+    version="2"
 >
 
 	<updates>
@@ -23,7 +23,7 @@
     </hooks>
 
     <assets>
-        <!-- <file path="assets/textures/koishi_d343_icon.texture" name="ui/atlas/koishi_d343_icon.texture" /> -->
+        <file path="assets/textures/koishi_d343_icon.texture" name="ui/atlas/koishi_d343_icon.texture" />
 
         <file path="assets/textures/wpn_fps_gre_d343_koishi_df.texture" name="units/upd_003/weapons/wpn_fps_gre_d343/textures/wpn_fps_gre_d343_koishi_df.texture" />
         <file path="assets/textures/wpn_fps_gre_d343_koishi_gsm.texture" name="units/upd_003/weapons/wpn_fps_gre_d343/textures/wpn_fps_gre_d343_koishi_gsm.texture" />

@@ -12,6 +12,7 @@ Hooks:Add(
             unit_dummy = "units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_husk_koishi",
             unit_hand = "units/upd_003/weapons/wpn_fps_gre_d343/wpn_fps_gre_d343_hand_koishi",
         })
+        :set_hud_icon("ui/atlas/koishi_d343_icon")
 
         self.RegisterSkin(skin)
 
