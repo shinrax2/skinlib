@@ -1,4 +1,5 @@
 ## next:
+- fixed SL_Skin:set_icon_large()
 
 ## 0.0.6:
 - fixed custom throwable skins been shown as nothing to peers
