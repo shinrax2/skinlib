@@ -1,4 +1,4 @@
-Hooks:PostHook(HUDWeaponGrenade, "_create_icon", "SkinLib.HUDWeaponGrenade._create_icon", function (self)
+Hooks:PostHook(HUDWeaponGeneric, "_create_icon", "SkinLib.HUDWeaponGeneric._create_icon", function (self)
 	local applied_skin = managers.weapon_inventory:get_applied_weapon_skin(string.sub(self:name_id(), 6)) -- TODO: find better way from bm_w_carbine to carbine
     if applied_skin  ~= nil then
         if tweak_data.weapon.weapon_skins[applied_skin].hud_icon then
