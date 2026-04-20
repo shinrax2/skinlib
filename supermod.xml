@@ -30,6 +30,7 @@
         <!-- HUD icon support-->
         <post hook_id="lib/managers/hud/hudweapon/hudweapongrenade" script_path="hooks/HUDWeaponGrenade.lua" /> 
         <post hook_id="lib/managers/hud/hudweapon/hudweapongeneric" script_path="hooks/HUDWeaponGeneric.lua" />
+        <post hook_id="lib/managers/menu/raid_menu/weaponselectiongui" script_path="hooks/WeaponSelectionGui.lua" />
     </hooks>
 
 </mod>

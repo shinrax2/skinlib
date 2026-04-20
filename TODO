@@ -10,4 +10,3 @@ IMP sync skins in mp to peers who also have them
 IMP config menu
 
 BUG skin not shown on thrown equipment as client
-BUG hud icon only changes on weapon equip, not skin equip

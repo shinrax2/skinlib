@@ -1,4 +1,5 @@
 ## next:
+- fixed hud icon only applying on load
 
 ## 0.1.0:
 - fixed SL_Skin:set_icon_large()

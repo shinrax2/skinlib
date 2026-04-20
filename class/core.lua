@@ -5,12 +5,12 @@ SkinLib._skins = {}
 SkinLib._injected_skins = {}
 SkinLib._parts = {}
 SkinLib._injected_parts = {}
-SkinLib.version ={
+SkinLib.version = {
     major = 0,
     minor = 1,
     patch = 0
 }
-SkinLib.weapon_tbl ={
+SkinLib.weapon_tbl = {
     -- secondaries
     c96 = "wpn_fps_pis_c96", -- Mauser C96
     tt33 = "wpn_fps_pis_tt33", -- TT33
