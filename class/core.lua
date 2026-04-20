@@ -8,7 +8,7 @@ SkinLib._injected_parts = {}
 SkinLib.version = {
     major = 0,
     minor = 1,
-    patch = 0
+    patch = 1
 }
 SkinLib.weapon_tbl = {
     -- secondaries
