@@ -1,4 +1,6 @@
 ## next:
+
+## 0.2.0:
 - added SL_Skin:set_force_cosmetic_parts() to override cosmetic parts with skins
 
 ## 0.1.1:
