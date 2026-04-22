@@ -2,7 +2,7 @@
 
 -- Hooks:Register("SkinLibCollectData") funny BLT-design flaw: you actually never need to call this register func at all, everything will work perfectly fine without it.
 
-Hooks:PreHook(WeaponFactoryManager, "_read_factory_data", "SkinLib_read_factory_data", function(self)
+Hooks:PreHook(WeaponFactoryManager, "_read_factory_data", "SkinLib.WeaponFactoryManager._read_factory_data", function(self)
     --[[
 
     -- dev code to extract weapon part ids & factory ids
@@ -114,9 +114,32 @@ Hooks:PreHook(WeaponFactoryManager, "_read_factory_data", "SkinLib_read_factory_
             -- custom fields
             si.custom = true
             si.hud_icon = skin.params.hud_icon or nil
+            si.force_cosmetic_parts = skin.params.force_cosmetic_parts or nil
 
 			tweak_data.weapon.weapon_skins[id] = si
 			SkinLib._set_injected_skin(id)
 		end
 	end
 end)
+
+
+---@diagnostic disable-next-line: duplicate-set-field
+function WeaponFactoryManager:assemble_from_blueprint(factory_id, p_unit, blueprint, third_person, done_cb, skip_queue)
+    local custom_blueprint = clone(blueprint)
+    local skin_id = managers.weapon_inventory:get_applied_weapon_skin(factory_id)
+    if skin_id and tweak_data.weapon.weapon_skins[skin_id].force_cosmetic_parts then
+        for base, replace in pairs(tweak_data.weapon.weapon_skins[skin_id].force_cosmetic_parts) do
+            for index, part in ipairs(blueprint) do
+                if part == base then
+                    if replace ~= "" then
+                        custom_blueprint[index] = replace
+                    else
+                        table.remove(custom_blueprint, index)
+                    end
+                end
+            end
+        end
+        return self:_assemble(factory_id, p_unit, custom_blueprint, third_person, done_cb, skip_queue)
+    end
+    return self:_assemble(factory_id, p_unit, blueprint, third_person, done_cb, skip_queue)
+end

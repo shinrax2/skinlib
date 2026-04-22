@@ -161,3 +161,13 @@ function SL_Skin:set_hud_icon(icon)
     end
     return self
 end
+
+---Sets cosmetic parts to override with skin
+---@param parts table
+---@return table
+function SL_Skin:set_force_cosmetic_parts(parts)
+    if parts then
+        self._skin.force_cosmetic_parts = parts
+    end
+    return self
+end

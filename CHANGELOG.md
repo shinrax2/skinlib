@@ -1,4 +1,5 @@
 ## next:
+- added SL_Skin:set_force_cosmetic_parts() to override cosmetic parts with skins
 
 ## 0.1.1:
 - fixed hud icon only applying on load
