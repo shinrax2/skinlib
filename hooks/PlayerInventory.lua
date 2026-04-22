@@ -36,6 +36,7 @@ local function bp_pack(blueprint, factory_id)
 	return s
 end
 
+---@diagnostic disable-next-line: duplicate-set-field
 function PlayerInventory:_send_equipped_weapon(send_equipped_weapon_type)
 	send_equipped_weapon_type = send_equipped_weapon_type or PlayerInventory.SEND_WEAPON_TYPE_PLAYER_PRIMARY_SECONDARY
 

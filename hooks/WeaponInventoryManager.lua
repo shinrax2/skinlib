@@ -1,5 +1,6 @@
 -- hotfix to avoid crashes when unlocked skin is not in tweak_data, will be fixed in next game update
 
+---@diagnostic disable: duplicate-set-field
 function WeaponInventoryManager:load_profile_slot(data)
 	self:setup()
 

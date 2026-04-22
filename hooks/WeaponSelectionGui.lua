@@ -23,6 +23,7 @@ Hooks:PostHook(WeaponSelectionGui, "_on_apply_weapon_skin", "SkinLib.WeaponSelec
             if tweak_data.weapon[weapon_id] and tweak_data.weapon[weapon_id].hud.icon then -- use vanilla icon
                 local icon = tweak_data.gui:get_full_gui_data(tweak_data.weapon[weapon_id].hud.icon)
                 managers.hud._weapon_panels[slot]._icon:set_image(icon.texture)
+---@diagnostic disable-next-line: deprecated
                 managers.hud._weapon_panels[slot]._icon:set_texture_rect(unpack(icon.texture_rect))
             end
         end
