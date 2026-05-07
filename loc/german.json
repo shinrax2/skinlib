@@ -1,5 +1,13 @@
 {
     "menu_skinlib_title" : "SkinLib",
     "menu_skinlib_reset" : "Standardoptionen",
-    "menu_skinlib_reset_confirm" : "Bist du dir sicher, dass du alle SkinLib Optionen auf Standardwerte setzen möchtest?"
+    "menu_skinlib_reset_confirm" : "Bist du dir sicher, dass du alle SkinLib Optionen auf Standardwerte setzen möchtest?",
+    "menu_skinlib_debug" : "Debug",
+    "menu_skinlib_debug_desc" : "Zeigt Debug Informationen, nützlich zur Entwicklung von SkinLib Mods.",
+    "menu_skinlin_forcecosmeticparts" : "Erzwinge Kosmetische Parts",
+    "menu_skinlin_forcecosmeticparts_desc" : "Erlaubt Skins bestimmte kosmetische Waffenteile zu erzwingen.",
+    "menu_skinlib_customhudicon" : "Eigenes HUD Symbol",
+    "menu_skinlib_customhudicon_desc" : "Erlaubt Skins eingene HUD Symbole zu verwenden.",
+    "menu_skinlib_expandweaponrotation" : "Erweiterte Waffenrotation",
+    "menu_skinlib_expandweaponrotation_desc" : "Fügt zusätzliche Rotationsachse zur Waffenauswahl hinzu."
 }
