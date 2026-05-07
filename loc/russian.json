@@ -1,0 +1,13 @@
+{
+    "menu_skinlib_title" : "SkinLib",
+    "menu_skinlib_reset" : "Настройки по-умолчанию",
+    "menu_skinlib_reset_confirm" : "Вы уверены, что хотите сбросить настройки SkinLib к значениям по-умолчанию?",
+    "menu_skinlib_debug" : "Отладка",
+    "menu_skinlib_debug_desc" : "Пишет информацию для отладки. Полезно во время разработки модов с SkinLib.",
+    "menu_skinlib_forcecosmeticparts" : "Обязательные части оружия",
+    "menu_skinlib_forcecosmeticparts_desc" : "Разрешать скинам ставить обязательные части на оружие.",
+    "menu_skinlib_customhudicon" : "Кастомные иконки",
+    "menu_skinlib_customhudicon_desc" : "Разрешать скинам использовать кастомные иконки в интерфейсе.",
+    "menu_skinlib_expandweaponrotation" : "Расширенное вращение оружия",
+    "menu_skinlib_expandweaponrotation_desc" : "Позволяет вращать оружие по большему количеству осей."
+}

@@ -1,5 +1,5 @@
 ## next:
-- added config menu for SkinLib features
+- added config menu for SkinLib features (russian translation by Punished Bernadetta)
 - added validation for skins (helps with developing skins, hidden behind debug option)
 
 ## 0.2.0:
