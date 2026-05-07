@@ -14,6 +14,11 @@
 		<update provider="modworkshop" identifier="55400"/>
 	</updates>
 
+    <localization directory="loc" default="english">
+		<loc file="english.json" language="english" />
+		<loc file="german.json" language="german" />
+	</localization>
+
     <hooks>
         <!-- setup classes -->
         <pre hook_id="lib/setups/setup" script_path="hooks/Setup.lua" /> 
@@ -31,6 +36,8 @@
         <post hook_id="lib/managers/hud/hudweapon/hudweapongrenade" script_path="hooks/HUDWeaponGrenade.lua" /> 
         <post hook_id="lib/managers/hud/hudweapon/hudweapongeneric" script_path="hooks/HUDWeaponGeneric.lua" />
         <post hook_id="lib/managers/menu/raid_menu/weaponselectiongui" script_path="hooks/WeaponSelectionGui.lua" />
+        <!-- Menu code -->
+        <post hook_id="lib/managers/menu/menucomponentmanager" script_path="hooks/MenuComponentManager.lua" />
     </hooks>
 
 </mod>

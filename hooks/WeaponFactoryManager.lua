@@ -125,21 +125,23 @@ end)
 
 ---@diagnostic disable-next-line: duplicate-set-field
 function WeaponFactoryManager:assemble_from_blueprint(factory_id, p_unit, blueprint, third_person, done_cb, skip_queue)
-    local custom_blueprint = clone(blueprint)
-    local skin_id = managers.weapon_inventory:get_applied_weapon_skin(factory_id)
-    if skin_id and tweak_data.weapon.weapon_skins[skin_id].force_cosmetic_parts then
-        for base, replace in pairs(tweak_data.weapon.weapon_skins[skin_id].force_cosmetic_parts) do
-            for index, part in ipairs(blueprint) do
-                if part == base then
-                    if replace ~= "" then
-                        custom_blueprint[index] = replace
-                    else
-                        table.remove(custom_blueprint, index)
+    if SkinLib.settings.ForceCosmeticParts then
+        local custom_blueprint = clone(blueprint)
+        local skin_id = managers.weapon_inventory:get_applied_weapon_skin(factory_id)
+        if SkinLib.settings.ForceCosmeticParts and skin_id and tweak_data.weapon.weapon_skins[skin_id].force_cosmetic_parts then
+            for base, replace in pairs(tweak_data.weapon.weapon_skins[skin_id].force_cosmetic_parts) do
+                for index, part in ipairs(blueprint) do
+                    if part == base then
+                        if replace ~= "" then
+                            custom_blueprint[index] = replace
+                        else
+                            table.remove(custom_blueprint, index)
+                        end
                     end
                 end
             end
+            return self:_assemble(factory_id, p_unit, custom_blueprint, third_person, done_cb, skip_queue)
         end
-        return self:_assemble(factory_id, p_unit, custom_blueprint, third_person, done_cb, skip_queue)
     end
     return self:_assemble(factory_id, p_unit, blueprint, third_person, done_cb, skip_queue)
 end

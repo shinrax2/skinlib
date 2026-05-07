@@ -1,6 +1,6 @@
 _G.SkinLib = _G.SkinLib or {}
 SkinLib.path = ModPath
-SkinLib.data = SavePath
+SkinLib.save_path = SavePath .. "SkinLib.json"
 SkinLib._skins = {}
 SkinLib._injected_skins = {}
 SkinLib._parts = {}
@@ -10,6 +10,14 @@ SkinLib.version = {
     minor = 2,
     patch = 0
 }
+SkinLib.default_settings = {
+    Debug = false,
+    ForceCosmeticParts = true,
+    CustomHudIcon = true,
+    ExpandWeaponRotation = true,
+}
+SkinLib.settings = clone(SkinLib.default_settings)
+
 SkinLib.weapon_tbl = {
     -- secondaries
     c96 = "wpn_fps_pis_c96", -- Mauser C96
@@ -60,6 +68,25 @@ local ids = {
 }
 
 -- PRIVATE
+
+function SkinLib.Load()
+    local file = io.open(SkinLib.save_path, "r")
+	if file then
+		local options = json.decode(file:read("*all"))
+		for key, ops in pairs(options) do
+			SkinLib.settings[key] = ops
+		end
+		file:close()
+	end
+end
+
+function SkinLib.Save()
+	local file = io.open(SkinLib.save_path, "w+")
+	if file then
+		file:write(json.encode(SkinLib.settings))
+		file:close()
+	end
+end
 
 function SkinLib._is_skin_injected(skin_id)
     for _, id in pairs(SkinLib._injected_skins) do
@@ -311,6 +338,8 @@ function SkinLib._validate_skin(skin, factory, guitweakdata)
 
     return valid
 end
+
+SkinLib.Load()
 
 -- PUBLIC
 

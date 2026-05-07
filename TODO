@@ -6,7 +6,6 @@ IMP skin:/part:_validate -> external to support json and class method
 IMP/TEST melee overwrites
 IMP sync skins in mp to peers who also have them
 IMP sound override for skins
-
-IMP config menu
+IMP animation override for skins
 
 BUG skin not shown on thrown equipment as client
