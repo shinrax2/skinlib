@@ -19,10 +19,10 @@ function SkinLibMenu:Init(root)
 
     self:Toggle({
         name = "ForceCosmeticParts",
-        text = "menu_skinlin_forcecosmeticparts",
+        text = "menu_skinlib_forcecosmeticparts",
         value = SkinLib.settings.ForceCosmeticParts,
         callback = callback(self, self, "change_clbk", {type = "ForceCosmeticParts", toogle = true}),
-        desc = "menu_skinlin_forcecosmeticparts_desc",
+        desc = "menu_skinlib_forcecosmeticparts_desc",
         auto_select_on_hover = true
     })
 
