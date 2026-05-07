@@ -301,14 +301,26 @@ function SkinLib._validate_skin(skin, factory)
         end
     end
 
-    -- icon loaded?
-    -- tweak_data.gui is not available when called
-    --[[if skin.icon_large then
-        if not guitweakdata.icons[skin.icon_large] then
+    -- custom hud icon loaded?
+    if skin.hud_icon then
+        local texture = type(skin.hud_icon) == "table" and skin.hud_icon.texture or skin.hud_icon
+        if not DB:has(ids["texture"], Idstring(texture)) then
             valid = false
-            log(sl .. "icon_large not found: " .. skin.icon_large .. " skin_id: " .. skin.skin_id)
+            log(sl .. "custom hud icon not loaded, icon:" .. texture)
         end
-    end]]
+    end
+
+    -- parts in force_cosmetic_parts valid?
+    for base, replace in pairs(skin.force_cosmetic_parts) do
+        if not factory.parts[base] then
+                valid = false
+                log(sl .. "cosmetic base_part not found: " .. base .. " skin_id: " .. skin.skin_id)
+            end
+            if not factory.parts[replace] then
+                valid = false
+                log(sl .. "cosmetic replace_part not found: " .. replace .. " skin_id: " .. skin.skin_id)
+            end
+    end
 
     log(sl .. "Skin: " .. skin.skin_id .. " Valid?: " .. tostring(valid))
     return valid
