@@ -311,15 +311,17 @@ function SkinLib._validate_skin(skin, factory)
     end
 
     -- parts in force_cosmetic_parts valid?
-    for base, replace in pairs(skin.force_cosmetic_parts) do
-        if not factory.parts[base] then
-                valid = false
-                log(sl .. "cosmetic base_part not found: " .. base .. " skin_id: " .. skin.skin_id)
-            end
-            if not factory.parts[replace] then
-                valid = false
-                log(sl .. "cosmetic replace_part not found: " .. replace .. " skin_id: " .. skin.skin_id)
-            end
+    if skin.force_cosmetic_parts then
+        for base, replace in pairs(skin.force_cosmetic_parts) do
+            if not factory.parts[base] then
+                    valid = false
+                    log(sl .. "cosmetic base_part not found: " .. base .. " skin_id: " .. skin.skin_id)
+                end
+                if not factory.parts[replace] then
+                    valid = false
+                    log(sl .. "cosmetic replace_part not found: " .. replace .. " skin_id: " .. skin.skin_id)
+                end
+        end
     end
 
     log(sl .. "Skin: " .. skin.skin_id .. " Valid?: " .. tostring(valid))
