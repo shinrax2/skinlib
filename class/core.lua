@@ -88,6 +88,10 @@ function SkinLib.Save()
 	end
 end
 
+function SkinLib.debug()
+    return SkinLib.settings.Debug
+end
+
 function SkinLib._is_skin_injected(skin_id)
     for _, id in pairs(SkinLib._injected_skins) do
         if id == skin_id then
@@ -180,7 +184,7 @@ function SkinLib._validate_part(part, factory)
     local sl = "[SkinLib][SL_Part][_validate_part] "
 
     -- does part_id already exist?
-    if factory.parts[part.part_id] ~= nil then
+    if factory.parts[part.part_id] then
         log(sl .. "part_id is already in use! '" .. part.part_id .. "'")
         valid = false
     end
@@ -228,34 +232,11 @@ function SkinLib._validate_part(part, factory)
         end
     end
 
+    log(sl .. "Part: " .. part.part_id .. " Valid?: " .. tostring(valid))
     return valid
 end
 
-function SkinLib._validate_material(material)
-    local valid = true
-    local sl = "[SkinLib][SL_Material][_validate_material] "
-
-    -- material name set?
-    if not material.name then
-        log(sl .. "material_name not set")
-        valid = false
-    end
-
-    -- set textures loaded?
-    for _, typ in ipairs({"bump_normal", "diffuse", "material", "reflection"}) do
-        local res = material[typ] or nil
-        if res ~= nil then
-            if not DB:has(ids["texture"], Idstring(res)) then
-                valid = false
-                log(sl .. "texture not loaded: " .. res .. ", material: " .. material:name())
-            end
-        end
-    end
-
-    return valid
-end
-
-function SkinLib._validate_skin(skin, factory, guitweakdata)
+function SkinLib._validate_skin(skin, factory)
     local valid = true
     local valid_rarity = {"loot_rarity_common", "loot_rarity_uncommon", "loot_rarity_rare"}
     local sl = "[SkinLib][SL_Skin][_validate_skin] "
@@ -275,13 +256,7 @@ function SkinLib._validate_skin(skin, factory, guitweakdata)
     end
 
     -- weapon_id valid?
-    local id_check = false
-    for id, _ in pairs(SkinLib.weapon_tbl) do
-        if skin.weapon_id == id then
-            id_check = true
-        end
-    end
-    if id_check == false then
+    if not tweak_data.weapon[skin.weapon_id] then
         log(sl .. "invalid weapon_id: " .. skin.weapon_id .. " skin_id: " .. skin.skin_id)
         valid = false
     end
@@ -335,7 +310,7 @@ function SkinLib._validate_skin(skin, factory, guitweakdata)
         end
     end]]
 
-
+    log(sl .. "Skin: " .. skin.skin_id .. " Valid?: " .. tostring(valid))
     return valid
 end
 

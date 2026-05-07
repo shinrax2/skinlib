@@ -1,4 +1,6 @@
 ## next:
+- added config menu for SkinLib features
+- added validation for skins (helps with developing skins, hidden behind debug option)
 
 ## 0.2.0:
 - added SL_Skin:set_force_cosmetic_parts() to override cosmetic parts with skins

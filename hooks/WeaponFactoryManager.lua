@@ -27,6 +27,9 @@ Hooks:PreHook(WeaponFactoryManager, "_read_factory_data", "SkinLib.WeaponFactory
     -- handle registered parts
     for id, part in pairs(SkinLib._get_parts()) do
         if not SkinLib._is_part_injected(id) then
+            if SkinLib.debug() then
+                SkinLib._validate_part(part.params, tweak_data.weapon.factory)
+            end
             -- setup materials
             local m_fps = {}
             local m_tps = {}
@@ -96,7 +99,9 @@ Hooks:PreHook(WeaponFactoryManager, "_read_factory_data", "SkinLib.WeaponFactory
     -- handle registered skins
     for id, skin in pairs(SkinLib._get_skins()) do
 		if not SkinLib._is_skin_injected(id) then
-			--SkinLib._validate_skin(skin.params, self.factory)
+            if SkinLib.debug() then
+			    SkinLib._validate_skin(skin.params, tweak_data.weapon.factory)
+            end
 			local si = {}
 			si.dlc = skin.params.dlc or nil
 			si.name_id = skin.params.name_id
