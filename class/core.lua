@@ -7,7 +7,7 @@ SkinLib._parts = {}
 SkinLib._injected_parts = {}
 SkinLib.version = {
     major = 0,
-    minor = 2,
+    minor = 3,
     patch = 0
 }
 SkinLib.default_settings = {
