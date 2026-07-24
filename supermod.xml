@@ -8,6 +8,7 @@
     disable_safe_mode="true"
     is_library="true"
     priority="991"
+    image="icon.png"
 >
 
     <updates>

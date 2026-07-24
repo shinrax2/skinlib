@@ -1,4 +1,5 @@
 ## next:
+- add icon, concept by Dribbleondo
 
 ## 0.3.0:
 - added config menu for SkinLib features (russian translation by Punished Bernadetta)
